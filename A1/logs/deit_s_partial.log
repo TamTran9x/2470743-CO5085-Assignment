@@ -1,0 +1,13 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[deit_s_partial] params total=21.70M trainable=10.69M GMACs=4.60 train=45000 val=5000 steps/epoch=703
+[deit_s_partial] ep   1/10 loss 2.320 train_acc 0.5757 val_loss 0.846 val_acc 0.7730 time 112s
+[deit_s_partial] ep   2/10 loss 1.300 train_acc 0.8251 val_loss 0.679 val_acc 0.8264 time 111s
+[deit_s_partial] ep   3/10 loss 1.109 train_acc 0.8894 val_loss 0.665 val_acc 0.8322 time 111s
+[deit_s_partial] ep   4/10 loss 0.986 train_acc 0.9341 val_loss 0.663 val_acc 0.8408 time 112s
+[deit_s_partial] ep   5/10 loss 0.917 train_acc 0.9596 val_loss 0.667 val_acc 0.8394 time 111s
+[deit_s_partial] ep   6/10 loss 0.870 train_acc 0.9759 val_loss 0.670 val_acc 0.8434 time 111s
+[deit_s_partial] ep   7/10 loss 0.839 train_acc 0.9857 val_loss 0.666 val_acc 0.8536 time 111s
+[deit_s_partial] ep   8/10 loss 0.820 train_acc 0.9918 val_loss 0.680 val_acc 0.8514 time 111s
+[deit_s_partial] ep   9/10 loss 0.811 train_acc 0.9944 val_loss 0.679 val_acc 0.8506 time 111s
+[deit_s_partial] ep  10/10 loss 0.806 train_acc 0.9964 val_loss 0.679 val_acc 0.8518 time 111s
+[deit_s_partial] TEST acc 0.8526 top5 0.9692 macroF1 0.8522 (best epoch 7, train 18.6 min, peak 1.48 GB)

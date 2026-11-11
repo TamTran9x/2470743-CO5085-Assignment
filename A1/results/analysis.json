@@ -1,0 +1,1422 @@
+{
+  "runs": {
+    "resnet50_scratch": {
+      "within_superclass_error_share": 0.3293747816975201,
+      "top_confusions": [
+        {
+          "true": "girl",
+          "pred": "woman",
+          "count": 18
+        },
+        {
+          "true": "seal",
+          "pred": "otter",
+          "count": 17
+        },
+        {
+          "true": "maple_tree",
+          "pred": "oak_tree",
+          "count": 17
+        },
+        {
+          "true": "woman",
+          "pred": "girl",
+          "count": 16
+        },
+        {
+          "true": "boy",
+          "pred": "man",
+          "count": 16
+        },
+        {
+          "true": "pine_tree",
+          "pred": "oak_tree",
+          "count": 15
+        },
+        {
+          "true": "oak_tree",
+          "pred": "maple_tree",
+          "count": 14
+        },
+        {
+          "true": "man",
+          "pred": "boy",
+          "count": 14
+        },
+        {
+          "true": "bus",
+          "pred": "streetcar",
+          "count": 13
+        },
+        {
+          "true": "otter",
+          "pred": "seal",
+          "count": 12
+        }
+      ],
+      "hardest_classes": [
+        {
+          "class": "seal",
+          "acc": 0.41
+        },
+        {
+          "class": "otter",
+          "acc": 0.43
+        },
+        {
+          "class": "turtle",
+          "acc": 0.47
+        },
+        {
+          "class": "squirrel",
+          "acc": 0.49
+        },
+        {
+          "class": "shrew",
+          "acc": 0.5
+        },
+        {
+          "class": "girl",
+          "acc": 0.5
+        },
+        {
+          "class": "bowl",
+          "acc": 0.52
+        },
+        {
+          "class": "boy",
+          "acc": 0.52
+        }
+      ],
+      "easiest_classes": [
+        {
+          "class": "orange",
+          "acc": 0.95
+        },
+        {
+          "class": "wardrobe",
+          "acc": 0.94
+        },
+        {
+          "class": "motorcycle",
+          "acc": 0.94
+        },
+        {
+          "class": "skyscraper",
+          "acc": 0.92
+        },
+        {
+          "class": "road",
+          "acc": 0.91
+        },
+        {
+          "class": "plain",
+          "acc": 0.9
+        },
+        {
+          "class": "pickup_truck",
+          "acc": 0.9
+        },
+        {
+          "class": "lawn_mower",
+          "acc": 0.9
+        }
+      ],
+      "top_superclass_confusions": [
+        {
+          "true": "reptiles",
+          "pred": "non-insect_invertebrates",
+          "pct": 7.6
+        },
+        {
+          "true": "aquatic_mammals",
+          "pred": "fish",
+          "pct": 6.4
+        },
+        {
+          "true": "vehicles_2",
+          "pred": "vehicles_1",
+          "pct": 6.2
+        },
+        {
+          "true": "vehicles_1",
+          "pred": "vehicles_2",
+          "pct": 6.2
+        },
+        {
+          "true": "large_carnivores",
+          "pred": "aquatic_mammals",
+          "pct": 5.8
+        },
+        {
+          "true": "large_carnivores",
+          "pred": "large_omnivores_and_herbivores",
+          "pct": 5.6
+        }
+      ],
+      "val_acc_at_epoch": {
+        "1": 0.11840000003576279,
+        "2": 0.18160000443458557,
+        "3": 0.22179999947547913,
+        "4": 0.3125999867916107,
+        "5": 0.3452000021934509,
+        "6": 0.38600000739097595,
+        "7": 0.4546000063419342,
+        "8": 0.5009999871253967,
+        "9": 0.5202000141143799,
+        "10": 0.5766000151634216,
+        "11": 0.5899999737739563,
+        "12": 0.6068000197410583,
+        "13": 0.6367999911308289,
+        "14": 0.6222000122070312,
+        "15": 0.6549999713897705,
+        "16": 0.6363999843597412,
+        "17": 0.6610000133514404,
+        "18": 0.6705999970436096,
+        "19": 0.6886000037193298,
+        "20": 0.6966000199317932,
+        "21": 0.6990000009536743,
+        "22": 0.6952000260353088,
+        "23": 0.7049999833106995,
+        "24": 0.70660001039505,
+        "25": 0.7081999778747559,
+        "26": 0.7088000178337097,
+        "27": 0.7120000123977661,
+        "28": 0.7129999995231628,
+        "29": 0.7070000171661377,
+        "30": 0.7116000056266785
+      },
+      "train_val_gap_final": 0.2731972916706188
+    },
+    "deit_s_scratch": {
+      "within_superclass_error_share": 0.22613065326633167,
+      "top_confusions": [
+        {
+          "true": "willow_tree",
+          "pred": "maple_tree",
+          "count": 18
+        },
+        {
+          "true": "oak_tree",
+          "pred": "pine_tree",
+          "count": 16
+        },
+        {
+          "true": "oak_tree",
+          "pred": "maple_tree",
+          "count": 13
+        },
+        {
+          "true": "bed",
+          "pred": "couch",
+          "count": 13
+        },
+        {
+          "true": "bus",
+          "pred": "streetcar",
+          "count": 12
+        },
+        {
+          "true": "tulip",
+          "pred": "poppy",
+          "count": 12
+        },
+        {
+          "true": "streetcar",
+          "pred": "bus",
+          "count": 12
+        },
+        {
+          "true": "pine_tree",
+          "pred": "oak_tree",
+          "count": 12
+        },
+        {
+          "true": "maple_tree",
+          "pred": "willow_tree",
+          "count": 11
+        },
+        {
+          "true": "girl",
+          "pred": "baby",
+          "count": 11
+        }
+      ],
+      "hardest_classes": [
+        {
+          "class": "bowl",
+          "acc": 0.16
+        },
+        {
+          "class": "seal",
+          "acc": 0.2
+        },
+        {
+          "class": "woman",
+          "acc": 0.22
+        },
+        {
+          "class": "cup",
+          "acc": 0.24
+        },
+        {
+          "class": "otter",
+          "acc": 0.24
+        },
+        {
+          "class": "lamp",
+          "acc": 0.24
+        },
+        {
+          "class": "crocodile",
+          "acc": 0.26
+        },
+        {
+          "class": "bear",
+          "acc": 0.26
+        }
+      ],
+      "easiest_classes": [
+        {
+          "class": "sunflower",
+          "acc": 0.83
+        },
+        {
+          "class": "road",
+          "acc": 0.8
+        },
+        {
+          "class": "orange",
+          "acc": 0.8
+        },
+        {
+          "class": "plain",
+          "acc": 0.79
+        },
+        {
+          "class": "wardrobe",
+          "acc": 0.77
+        },
+        {
+          "class": "apple",
+          "acc": 0.75
+        },
+        {
+          "class": "cockroach",
+          "acc": 0.74
+        },
+        {
+          "class": "skyscraper",
+          "acc": 0.74
+        }
+      ],
+      "top_superclass_confusions": [
+        {
+          "true": "vehicles_1",
+          "pred": "vehicles_2",
+          "pct": 14.2
+        },
+        {
+          "true": "vehicles_2",
+          "pred": "vehicles_1",
+          "pct": 12.2
+        },
+        {
+          "true": "medium_mammals",
+          "pred": "large_carnivores",
+          "pct": 9.2
+        },
+        {
+          "true": "food_containers",
+          "pred": "household_electrical_devices",
+          "pct": 9.0
+        },
+        {
+          "true": "large_omnivores_and_herbivores",
+          "pred": "large_carnivores",
+          "pct": 8.2
+        },
+        {
+          "true": "aquatic_mammals",
+          "pred": "fish",
+          "pct": 8.0
+        }
+      ],
+      "val_acc_at_epoch": {
+        "1": 0.10999999940395355,
+        "2": 0.16619999706745148,
+        "3": 0.1873999983072281,
+        "4": 0.210999995470047,
+        "5": 0.25040000677108765,
+        "6": 0.2513999938964844,
+        "7": 0.28679999709129333,
+        "8": 0.31459999084472656,
+        "9": 0.3240000009536743,
+        "10": 0.3418000042438507,
+        "11": 0.365200012922287,
+        "12": 0.3792000114917755,
+        "13": 0.4052000045776367,
+        "14": 0.4246000051498413,
+        "15": 0.4284000098705292,
+        "16": 0.44440001249313354,
+        "17": 0.45339998602867126,
+        "18": 0.4641999900341034,
+        "19": 0.46000000834465027,
+        "20": 0.4551999866962433,
+        "21": 0.46239998936653137,
+        "22": 0.45719999074935913,
+        "23": 0.46480000019073486,
+        "24": 0.4668000042438507,
+        "25": 0.4643999934196472,
+        "26": 0.4747999906539917,
+        "27": 0.46959999203681946,
+        "28": 0.46860000491142273,
+        "29": 0.47099998593330383,
+        "30": 0.46860000491142273
+      },
+      "train_val_gap_final": 0.5280660690572828
+    },
+    "resnet50_linear": {
+      "within_superclass_error_share": 0.37001209189842804,
+      "top_confusions": [
+        {
+          "true": "girl",
+          "pred": "woman",
+          "count": 22
+        },
+        {
+          "true": "boy",
+          "pred": "man",
+          "count": 22
+        },
+        {
+          "true": "maple_tree",
+          "pred": "oak_tree",
+          "count": 19
+        },
+        {
+          "true": "willow_tree",
+          "pred": "oak_tree",
+          "count": 14
+        },
+        {
+          "true": "girl",
+          "pred": "boy",
+          "count": 14
+        },
+        {
+          "true": "beaver",
+          "pred": "shrew",
+          "count": 13
+        },
+        {
+          "true": "seal",
+          "pred": "otter",
+          "count": 13
+        },
+        {
+          "true": "snake",
+          "pred": "worm",
+          "count": 12
+        },
+        {
+          "true": "mouse",
+          "pred": "shrew",
+          "count": 11
+        },
+        {
+          "true": "maple_tree",
+          "pred": "willow_tree",
+          "count": 11
+        }
+      ],
+      "hardest_classes": [
+        {
+          "class": "girl",
+          "acc": 0.35
+        },
+        {
+          "class": "boy",
+          "acc": 0.51
+        },
+        {
+          "class": "seal",
+          "acc": 0.52
+        },
+        {
+          "class": "possum",
+          "acc": 0.52
+        },
+        {
+          "class": "maple_tree",
+          "acc": 0.53
+        },
+        {
+          "class": "mouse",
+          "acc": 0.54
+        },
+        {
+          "class": "otter",
+          "acc": 0.55
+        },
+        {
+          "class": "willow_tree",
+          "acc": 0.55
+        }
+      ],
+      "easiest_classes": [
+        {
+          "class": "chimpanzee",
+          "acc": 0.95
+        },
+        {
+          "class": "orange",
+          "acc": 0.94
+        },
+        {
+          "class": "sunflower",
+          "acc": 0.93
+        },
+        {
+          "class": "wardrobe",
+          "acc": 0.93
+        },
+        {
+          "class": "motorcycle",
+          "acc": 0.92
+        },
+        {
+          "class": "skyscraper",
+          "acc": 0.91
+        },
+        {
+          "class": "tractor",
+          "acc": 0.91
+        },
+        {
+          "class": "road",
+          "acc": 0.9
+        }
+      ],
+      "top_superclass_confusions": [
+        {
+          "true": "medium_mammals",
+          "pred": "small_mammals",
+          "pct": 8.4
+        },
+        {
+          "true": "vehicles_1",
+          "pred": "vehicles_2",
+          "pct": 7.2
+        },
+        {
+          "true": "aquatic_mammals",
+          "pred": "fish",
+          "pct": 6.4
+        },
+        {
+          "true": "small_mammals",
+          "pred": "medium_mammals",
+          "pct": 6.2
+        },
+        {
+          "true": "aquatic_mammals",
+          "pred": "small_mammals",
+          "pct": 6.0
+        },
+        {
+          "true": "non-insect_invertebrates",
+          "pred": "reptiles",
+          "pct": 5.8
+        }
+      ],
+      "val_acc_at_epoch": {
+        "1": 0.6582000255584717,
+        "2": 0.7157999873161316,
+        "3": 0.7310000061988831,
+        "4": 0.741599977016449,
+        "5": 0.7486000061035156,
+        "6": 0.7486000061035156,
+        "7": 0.7501999735832214,
+        "8": 0.7522000074386597,
+        "9": 0.7527999877929688,
+        "10": 0.7519999742507935
+      },
+      "train_val_gap_final": 0.09463942830966177
+    },
+    "deit_s_linear": {
+      "within_superclass_error_share": 0.39285714285714285,
+      "top_confusions": [
+        {
+          "true": "maple_tree",
+          "pred": "oak_tree",
+          "count": 36
+        },
+        {
+          "true": "bed",
+          "pred": "couch",
+          "count": 18
+        },
+        {
+          "true": "boy",
+          "pred": "man",
+          "count": 18
+        },
+        {
+          "true": "girl",
+          "pred": "boy",
+          "count": 17
+        },
+        {
+          "true": "woman",
+          "pred": "man",
+          "count": 17
+        },
+        {
+          "true": "girl",
+          "pred": "woman",
+          "count": 17
+        },
+        {
+          "true": "pine_tree",
+          "pred": "oak_tree",
+          "count": 16
+        },
+        {
+          "true": "willow_tree",
+          "pred": "oak_tree",
+          "count": 15
+        },
+        {
+          "true": "bowl",
+          "pred": "plate",
+          "count": 15
+        },
+        {
+          "true": "dolphin",
+          "pred": "whale",
+          "count": 14
+        }
+      ],
+      "hardest_classes": [
+        {
+          "class": "girl",
+          "acc": 0.45
+        },
+        {
+          "class": "maple_tree",
+          "acc": 0.47
+        },
+        {
+          "class": "willow_tree",
+          "acc": 0.48
+        },
+        {
+          "class": "boy",
+          "acc": 0.5
+        },
+        {
+          "class": "otter",
+          "acc": 0.51
+        },
+        {
+          "class": "forest",
+          "acc": 0.53
+        },
+        {
+          "class": "bowl",
+          "acc": 0.54
+        },
+        {
+          "class": "mouse",
+          "acc": 0.56
+        }
+      ],
+      "easiest_classes": [
+        {
+          "class": "lawn_mower",
+          "acc": 0.95
+        },
+        {
+          "class": "skunk",
+          "acc": 0.92
+        },
+        {
+          "class": "chimpanzee",
+          "acc": 0.92
+        },
+        {
+          "class": "tractor",
+          "acc": 0.92
+        },
+        {
+          "class": "television",
+          "acc": 0.91
+        },
+        {
+          "class": "orange",
+          "acc": 0.91
+        },
+        {
+          "class": "keyboard",
+          "acc": 0.9
+        },
+        {
+          "class": "apple",
+          "acc": 0.89
+        }
+      ],
+      "top_superclass_confusions": [
+        {
+          "true": "vehicles_1",
+          "pred": "vehicles_2",
+          "pct": 8.6
+        },
+        {
+          "true": "medium_mammals",
+          "pred": "small_mammals",
+          "pct": 7.2
+        },
+        {
+          "true": "large_natural_outdoor_scenes",
+          "pred": "trees",
+          "pct": 7.2
+        },
+        {
+          "true": "aquatic_mammals",
+          "pred": "fish",
+          "pct": 7.0
+        },
+        {
+          "true": "small_mammals",
+          "pred": "medium_mammals",
+          "pct": 5.2
+        },
+        {
+          "true": "aquatic_mammals",
+          "pred": "small_mammals",
+          "pct": 5.2
+        }
+      ],
+      "val_acc_at_epoch": {
+        "1": 0.7034000158309937,
+        "2": 0.7401999831199646,
+        "3": 0.7364000082015991,
+        "4": 0.7445999979972839,
+        "5": 0.7490000128746033,
+        "6": 0.7490000128746033,
+        "7": 0.7527999877929688,
+        "8": 0.7559999823570251,
+        "9": 0.7558000087738037,
+        "10": 0.7549999952316284
+      },
+      "train_val_gap_final": 0.05541074445542704
+    },
+    "resnet50_partial": {
+      "within_superclass_error_share": 0.4865238424326192,
+      "top_confusions": [
+        {
+          "true": "oak_tree",
+          "pred": "maple_tree",
+          "count": 23
+        },
+        {
+          "true": "girl",
+          "pred": "woman",
+          "count": 19
+        },
+        {
+          "true": "otter",
+          "pred": "seal",
+          "count": 17
+        },
+        {
+          "true": "maple_tree",
+          "pred": "oak_tree",
+          "count": 16
+        },
+        {
+          "true": "pine_tree",
+          "pred": "oak_tree",
+          "count": 15
+        },
+        {
+          "true": "plate",
+          "pred": "bowl",
+          "count": 13
+        },
+        {
+          "true": "boy",
+          "pred": "girl",
+          "count": 13
+        },
+        {
+          "true": "man",
+          "pred": "boy",
+          "count": 13
+        },
+        {
+          "true": "girl",
+          "pred": "boy",
+          "count": 12
+        },
+        {
+          "true": "shrew",
+          "pred": "mouse",
+          "count": 11
+        }
+      ],
+      "hardest_classes": [
+        {
+          "class": "girl",
+          "acc": 0.58
+        },
+        {
+          "class": "otter",
+          "acc": 0.63
+        },
+        {
+          "class": "boy",
+          "acc": 0.64
+        },
+        {
+          "class": "oak_tree",
+          "acc": 0.67
+        },
+        {
+          "class": "forest",
+          "acc": 0.69
+        },
+        {
+          "class": "willow_tree",
+          "acc": 0.69
+        },
+        {
+          "class": "pine_tree",
+          "acc": 0.7
+        },
+        {
+          "class": "maple_tree",
+          "acc": 0.7
+        }
+      ],
+      "easiest_classes": [
+        {
+          "class": "bicycle",
+          "acc": 0.97
+        },
+        {
+          "class": "orange",
+          "acc": 0.97
+        },
+        {
+          "class": "skunk",
+          "acc": 0.96
+        },
+        {
+          "class": "sunflower",
+          "acc": 0.96
+        },
+        {
+          "class": "rocket",
+          "acc": 0.96
+        },
+        {
+          "class": "pickup_truck",
+          "acc": 0.96
+        },
+        {
+          "class": "tractor",
+          "acc": 0.96
+        },
+        {
+          "class": "wardrobe",
+          "acc": 0.96
+        }
+      ],
+      "top_superclass_confusions": [
+        {
+          "true": "vehicles_1",
+          "pred": "vehicles_2",
+          "pct": 4.6
+        },
+        {
+          "true": "medium_mammals",
+          "pred": "small_mammals",
+          "pct": 4.0
+        },
+        {
+          "true": "reptiles",
+          "pred": "non-insect_invertebrates",
+          "pct": 3.6
+        },
+        {
+          "true": "fish",
+          "pred": "aquatic_mammals",
+          "pct": 3.6
+        },
+        {
+          "true": "medium_mammals",
+          "pred": "aquatic_mammals",
+          "pct": 3.6
+        },
+        {
+          "true": "vehicles_2",
+          "pred": "vehicles_1",
+          "pct": 2.8
+        }
+      ],
+      "val_acc_at_epoch": {
+        "1": 0.7720000147819519,
+        "2": 0.8190000057220459,
+        "3": 0.8198000192642212,
+        "4": 0.828000009059906,
+        "5": 0.8356000185012817,
+        "6": 0.8381999731063843,
+        "7": 0.8435999751091003,
+        "8": 0.8453999757766724,
+        "9": 0.8442000150680542,
+        "10": 0.8435999751091003
+      },
+      "train_val_gap_final": 0.15313277738023112
+    },
+    "deit_s_partial": {
+      "within_superclass_error_share": 0.4654002713704206,
+      "top_confusions": [
+        {
+          "true": "girl",
+          "pred": "woman",
+          "count": 18
+        },
+        {
+          "true": "snake",
+          "pred": "worm",
+          "count": 18
+        },
+        {
+          "true": "oak_tree",
+          "pred": "maple_tree",
+          "count": 15
+        },
+        {
+          "true": "maple_tree",
+          "pred": "oak_tree",
+          "count": 14
+        },
+        {
+          "true": "boy",
+          "pred": "man",
+          "count": 14
+        },
+        {
+          "true": "oak_tree",
+          "pred": "pine_tree",
+          "count": 13
+        },
+        {
+          "true": "dolphin",
+          "pred": "shark",
+          "count": 13
+        },
+        {
+          "true": "tulip",
+          "pred": "poppy",
+          "count": 12
+        },
+        {
+          "true": "woman",
+          "pred": "man",
+          "count": 12
+        },
+        {
+          "true": "girl",
+          "pred": "boy",
+          "count": 11
+        }
+      ],
+      "hardest_classes": [
+        {
+          "class": "girl",
+          "acc": 0.53
+        },
+        {
+          "class": "boy",
+          "acc": 0.62
+        },
+        {
+          "class": "oak_tree",
+          "acc": 0.63
+        },
+        {
+          "class": "shrew",
+          "acc": 0.66
+        },
+        {
+          "class": "seal",
+          "acc": 0.68
+        },
+        {
+          "class": "otter",
+          "acc": 0.68
+        },
+        {
+          "class": "maple_tree",
+          "acc": 0.7
+        },
+        {
+          "class": "dolphin",
+          "acc": 0.7
+        }
+      ],
+      "easiest_classes": [
+        {
+          "class": "lawn_mower",
+          "acc": 0.98
+        },
+        {
+          "class": "skunk",
+          "acc": 0.97
+        },
+        {
+          "class": "wardrobe",
+          "acc": 0.97
+        },
+        {
+          "class": "road",
+          "acc": 0.97
+        },
+        {
+          "class": "motorcycle",
+          "acc": 0.97
+        },
+        {
+          "class": "tractor",
+          "acc": 0.96
+        },
+        {
+          "class": "sunflower",
+          "acc": 0.95
+        },
+        {
+          "class": "orchid",
+          "acc": 0.95
+        }
+      ],
+      "top_superclass_confusions": [
+        {
+          "true": "aquatic_mammals",
+          "pred": "fish",
+          "pct": 6.8
+        },
+        {
+          "true": "vehicles_2",
+          "pred": "vehicles_1",
+          "pct": 5.2
+        },
+        {
+          "true": "reptiles",
+          "pred": "non-insect_invertebrates",
+          "pct": 5.0
+        },
+        {
+          "true": "large_carnivores",
+          "pred": "large_omnivores_and_herbivores",
+          "pct": 3.8
+        },
+        {
+          "true": "small_mammals",
+          "pred": "medium_mammals",
+          "pct": 3.6
+        },
+        {
+          "true": "vehicles_1",
+          "pred": "vehicles_2",
+          "pct": 3.6
+        }
+      ],
+      "val_acc_at_epoch": {
+        "1": 0.7730000019073486,
+        "2": 0.8263999819755554,
+        "3": 0.8321999907493591,
+        "4": 0.8407999873161316,
+        "5": 0.8393999934196472,
+        "6": 0.8434000015258789,
+        "7": 0.853600025177002,
+        "8": 0.8514000177383423,
+        "9": 0.850600004196167,
+        "10": 0.8518000245094299
+      },
+      "train_val_gap_final": 0.1445548830296881
+    },
+    "resnet50_full": {
+      "within_superclass_error_share": 0.4810578984989278,
+      "top_confusions": [
+        {
+          "true": "maple_tree",
+          "pred": "oak_tree",
+          "count": 20
+        },
+        {
+          "true": "oak_tree",
+          "pred": "maple_tree",
+          "count": 18
+        },
+        {
+          "true": "otter",
+          "pred": "seal",
+          "count": 14
+        },
+        {
+          "true": "man",
+          "pred": "boy",
+          "count": 14
+        },
+        {
+          "true": "willow_tree",
+          "pred": "maple_tree",
+          "count": 13
+        },
+        {
+          "true": "girl",
+          "pred": "boy",
+          "count": 13
+        },
+        {
+          "true": "girl",
+          "pred": "woman",
+          "count": 12
+        },
+        {
+          "true": "plate",
+          "pred": "bowl",
+          "count": 12
+        },
+        {
+          "true": "pine_tree",
+          "pred": "oak_tree",
+          "count": 12
+        },
+        {
+          "true": "willow_tree",
+          "pred": "oak_tree",
+          "count": 11
+        }
+      ],
+      "hardest_classes": [
+        {
+          "class": "girl",
+          "acc": 0.58
+        },
+        {
+          "class": "willow_tree",
+          "acc": 0.63
+        },
+        {
+          "class": "maple_tree",
+          "acc": 0.66
+        },
+        {
+          "class": "forest",
+          "acc": 0.68
+        },
+        {
+          "class": "possum",
+          "acc": 0.68
+        },
+        {
+          "class": "pine_tree",
+          "acc": 0.69
+        },
+        {
+          "class": "otter",
+          "acc": 0.7
+        },
+        {
+          "class": "oak_tree",
+          "acc": 0.71
+        }
+      ],
+      "easiest_classes": [
+        {
+          "class": "orange",
+          "acc": 0.98
+        },
+        {
+          "class": "skunk",
+          "acc": 0.97
+        },
+        {
+          "class": "motorcycle",
+          "acc": 0.97
+        },
+        {
+          "class": "apple",
+          "acc": 0.97
+        },
+        {
+          "class": "bicycle",
+          "acc": 0.96
+        },
+        {
+          "class": "wardrobe",
+          "acc": 0.96
+        },
+        {
+          "class": "sunflower",
+          "acc": 0.96
+        },
+        {
+          "class": "aquarium_fish",
+          "acc": 0.96
+        }
+      ],
+      "top_superclass_confusions": [
+        {
+          "true": "fish",
+          "pred": "aquatic_mammals",
+          "pct": 4.8
+        },
+        {
+          "true": "vehicles_1",
+          "pred": "vehicles_2",
+          "pct": 4.6
+        },
+        {
+          "true": "reptiles",
+          "pred": "non-insect_invertebrates",
+          "pct": 3.4
+        },
+        {
+          "true": "medium_mammals",
+          "pred": "small_mammals",
+          "pct": 3.2
+        },
+        {
+          "true": "aquatic_mammals",
+          "pred": "fish",
+          "pct": 3.2
+        },
+        {
+          "true": "large_natural_outdoor_scenes",
+          "pred": "trees",
+          "pct": 3.0
+        }
+      ],
+      "val_acc_at_epoch": {
+        "1": 0.7558000087738037,
+        "2": 0.805400013923645,
+        "3": 0.8203999996185303,
+        "4": 0.8375999927520752,
+        "5": 0.8335999846458435,
+        "6": 0.8417999744415283,
+        "7": 0.8497999906539917,
+        "8": 0.8533999919891357,
+        "9": 0.8543999791145325,
+        "10": 0.8568000197410583
+      },
+      "train_val_gap_final": 0.13959934014514364
+    },
+    "deit_s_full": {
+      "within_superclass_error_share": 0.5153105861767279,
+      "top_confusions": [
+        {
+          "true": "oak_tree",
+          "pred": "maple_tree",
+          "count": 17
+        },
+        {
+          "true": "maple_tree",
+          "pred": "oak_tree",
+          "count": 15
+        },
+        {
+          "true": "man",
+          "pred": "boy",
+          "count": 13
+        },
+        {
+          "true": "girl",
+          "pred": "boy",
+          "count": 13
+        },
+        {
+          "true": "woman",
+          "pred": "girl",
+          "count": 12
+        },
+        {
+          "true": "girl",
+          "pred": "baby",
+          "count": 11
+        },
+        {
+          "true": "man",
+          "pred": "woman",
+          "count": 11
+        },
+        {
+          "true": "otter",
+          "pred": "seal",
+          "count": 11
+        },
+        {
+          "true": "girl",
+          "pred": "woman",
+          "count": 10
+        },
+        {
+          "true": "crab",
+          "pred": "lobster",
+          "count": 10
+        }
+      ],
+      "hardest_classes": [
+        {
+          "class": "girl",
+          "acc": 0.63
+        },
+        {
+          "class": "boy",
+          "acc": 0.71
+        },
+        {
+          "class": "oak_tree",
+          "acc": 0.71
+        },
+        {
+          "class": "man",
+          "acc": 0.72
+        },
+        {
+          "class": "maple_tree",
+          "acc": 0.73
+        },
+        {
+          "class": "otter",
+          "acc": 0.74
+        },
+        {
+          "class": "forest",
+          "acc": 0.75
+        },
+        {
+          "class": "bowl",
+          "acc": 0.76
+        }
+      ],
+      "easiest_classes": [
+        {
+          "class": "road",
+          "acc": 1.0
+        },
+        {
+          "class": "tractor",
+          "acc": 0.98
+        },
+        {
+          "class": "lawn_mower",
+          "acc": 0.98
+        },
+        {
+          "class": "pickup_truck",
+          "acc": 0.98
+        },
+        {
+          "class": "apple",
+          "acc": 0.98
+        },
+        {
+          "class": "skunk",
+          "acc": 0.97
+        },
+        {
+          "class": "wardrobe",
+          "acc": 0.97
+        },
+        {
+          "class": "motorcycle",
+          "acc": 0.97
+        }
+      ],
+      "top_superclass_confusions": [
+        {
+          "true": "aquatic_mammals",
+          "pred": "fish",
+          "pct": 3.8
+        },
+        {
+          "true": "vehicles_1",
+          "pred": "vehicles_2",
+          "pct": 3.2
+        },
+        {
+          "true": "medium_mammals",
+          "pred": "small_mammals",
+          "pct": 3.2
+        },
+        {
+          "true": "reptiles",
+          "pred": "non-insect_invertebrates",
+          "pct": 2.8
+        },
+        {
+          "true": "small_mammals",
+          "pred": "aquatic_mammals",
+          "pct": 2.8
+        },
+        {
+          "true": "vehicles_2",
+          "pred": "vehicles_1",
+          "pct": 2.6
+        }
+      ],
+      "val_acc_at_epoch": {
+        "1": 0.7922000288963318,
+        "2": 0.8226000070571899,
+        "3": 0.826200008392334,
+        "4": 0.8560000061988831,
+        "5": 0.8529999852180481,
+        "6": 0.8587999939918518,
+        "7": 0.871399998664856,
+        "8": 0.871399998664856,
+        "9": 0.8762000203132629,
+        "10": 0.8759999871253967
+      },
+      "train_val_gap_final": 0.12217746664416229
+    }
+  },
+  "mcnemar_cnn_vs_vit": {
+    "scratch": {
+      "only_a": 2845,
+      "only_b": 534,
+      "p_value": 0.0
+    },
+    "linear": {
+      "only_a": 984,
+      "only_b": 917,
+      "p_value": 0.13006864842964522
+    },
+    "partial": {
+      "only_a": 643,
+      "only_b": 616,
+      "p_value": 0.46371986491081335
+    },
+    "full": {
+      "only_a": 412,
+      "only_b": 668,
+      "p_value": 6.411089625454194e-15
+    }
+  },
+  "best_by_val": {
+    "resnet50": "resnet50_full",
+    "deit_s": "deit_s_full"
+  },
+  "overlap_best_cnn_vs_vit": {
+    "both_correct": 0.8189,
+    "only_a": 0.0412,
+    "only_b": 0.0668,
+    "both_wrong": 0.0731,
+    "ensemble_acc": 0.8967
+  },
+  "overall_best": "deit_s_full"
+}

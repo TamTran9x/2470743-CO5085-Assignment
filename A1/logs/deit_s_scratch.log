@@ -1,0 +1,32 @@
+[deit_s_scratch] params total=21.70M trainable=21.70M GMACs=4.60 train=45000 val=5000 steps/epoch=703
+[deit_s_scratch] ep   1/30 loss 4.109 train_acc 0.0899 val_loss 3.733 val_acc 0.1100 time 171s
+[deit_s_scratch] ep   2/30 loss 3.746 train_acc 0.1552 val_loss 3.465 val_acc 0.1662 time 171s
+[deit_s_scratch] ep   3/30 loss 3.601 train_acc 0.1879 val_loss 3.344 val_acc 0.1874 time 171s
+[deit_s_scratch] ep   4/30 loss 3.499 train_acc 0.2092 val_loss 3.244 val_acc 0.2110 time 171s
+[deit_s_scratch] ep   5/30 loss 3.386 train_acc 0.2345 val_loss 3.072 val_acc 0.2504 time 171s
+[deit_s_scratch] ep   6/30 loss 3.264 train_acc 0.2631 val_loss 3.003 val_acc 0.2514 time 171s
+[deit_s_scratch] ep   7/30 loss 3.152 train_acc 0.2889 val_loss 2.851 val_acc 0.2868 time 171s
+[deit_s_scratch] ep   8/30 loss 3.044 train_acc 0.3154 val_loss 2.733 val_acc 0.3146 time 171s
+[deit_s_scratch] ep   9/30 loss 2.925 train_acc 0.3440 val_loss 2.675 val_acc 0.3240 time 171s
+[deit_s_scratch] ep  10/30 loss 2.807 train_acc 0.3732 val_loss 2.601 val_acc 0.3418 time 171s
+[deit_s_scratch] ep  11/30 loss 2.693 train_acc 0.4060 val_loss 2.512 val_acc 0.3652 time 171s
+[deit_s_scratch] ep  12/30 loss 2.558 train_acc 0.4396 val_loss 2.417 val_acc 0.3792 time 171s
+[deit_s_scratch] ep  13/30 loss 2.405 train_acc 0.4840 val_loss 2.296 val_acc 0.4052 time 171s
+[deit_s_scratch] ep  14/30 loss 2.262 train_acc 0.5242 val_loss 2.224 val_acc 0.4246 time 171s
+[deit_s_scratch] ep  15/30 loss 2.108 train_acc 0.5710 val_loss 2.220 val_acc 0.4284 time 171s
+[deit_s_scratch] ep  16/30 loss 1.924 train_acc 0.6306 val_loss 2.192 val_acc 0.4444 time 171s
+[deit_s_scratch] ep  17/30 loss 1.749 train_acc 0.6884 val_loss 2.186 val_acc 0.4534 time 171s
+[deit_s_scratch] ep  18/30 loss 1.572 train_acc 0.7543 val_loss 2.167 val_acc 0.4642 time 171s
+[deit_s_scratch] ep  19/30 loss 1.403 train_acc 0.8173 val_loss 2.266 val_acc 0.4600 time 171s
+[deit_s_scratch] ep  20/30 loss 1.263 train_acc 0.8740 val_loss 2.320 val_acc 0.4552 time 171s
+[deit_s_scratch] ep  21/30 loss 1.158 train_acc 0.9129 val_loss 2.335 val_acc 0.4624 time 171s
+[deit_s_scratch] ep  22/30 loss 1.077 train_acc 0.9438 val_loss 2.358 val_acc 0.4572 time 171s
+[deit_s_scratch] ep  23/30 loss 1.017 train_acc 0.9635 val_loss 2.378 val_acc 0.4648 time 171s
+[deit_s_scratch] ep  24/30 loss 0.971 train_acc 0.9768 val_loss 2.393 val_acc 0.4668 time 171s
+[deit_s_scratch] ep  25/30 loss 0.937 train_acc 0.9861 val_loss 2.426 val_acc 0.4644 time 171s
+[deit_s_scratch] ep  26/30 loss 0.911 train_acc 0.9904 val_loss 2.402 val_acc 0.4748 time 171s
+[deit_s_scratch] ep  27/30 loss 0.894 train_acc 0.9934 val_loss 2.413 val_acc 0.4696 time 171s
+[deit_s_scratch] ep  28/30 loss 0.884 train_acc 0.9950 val_loss 2.421 val_acc 0.4686 time 171s
+[deit_s_scratch] ep  29/30 loss 0.878 train_acc 0.9962 val_loss 2.425 val_acc 0.4710 time 171s
+[deit_s_scratch] ep  30/30 loss 0.876 train_acc 0.9967 val_loss 2.426 val_acc 0.4686 time 171s
+[deit_s_scratch] TEST acc 0.4826 top5 0.7155 macroF1 0.4776 (best epoch 26, train 85.5 min, peak 2.62 GB)

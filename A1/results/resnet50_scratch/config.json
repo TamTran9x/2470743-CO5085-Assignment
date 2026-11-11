@@ -1,0 +1,20 @@
+{
+  "arch": "resnet50",
+  "mode": "scratch",
+  "epochs": 30,
+  "lr": 0.0005,
+  "head_lr": 0.0005,
+  "warmup": 3,
+  "wd": 0.05,
+  "batch_size": 64,
+  "img_size": 224,
+  "label_smoothing": 0.1,
+  "clip_grad": 1.0,
+  "seed": 42,
+  "split_seed": 0,
+  "data": "data",
+  "out": "results",
+  "ckpt_dir": "checkpoints",
+  "name": "resnet50_scratch",
+  "train_subset": 0
+}

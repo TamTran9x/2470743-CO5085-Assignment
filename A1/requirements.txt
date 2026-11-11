@@ -1,0 +1,15 @@
+# PyTorch with CUDA 12.4 wheels:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.5.1
+torchvision==0.20.1
+timm==1.0.30
+huggingface_hub==2.4.0
+numpy==2.4.6
+pandas==3.1.0
+pyarrow==26.0.0
+pillow==13.0.0
+scikit-learn==1.9.1
+scipy==1.17.1
+matplotlib==3.11.2
+# only needed to compile the PDF report (report/report.typ)
+typst==0.15.0

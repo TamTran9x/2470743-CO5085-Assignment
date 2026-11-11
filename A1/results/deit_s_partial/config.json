@@ -1,0 +1,20 @@
+{
+  "arch": "deit_s",
+  "mode": "partial",
+  "epochs": 10,
+  "lr": 0.0001,
+  "head_lr": 0.001,
+  "warmup": 1,
+  "wd": 0.05,
+  "batch_size": 64,
+  "img_size": 224,
+  "label_smoothing": 0.1,
+  "clip_grad": 1.0,
+  "seed": 42,
+  "split_seed": 0,
+  "data": "data",
+  "out": "results",
+  "ckpt_dir": "checkpoints",
+  "name": "deit_s_partial",
+  "train_subset": 0
+}

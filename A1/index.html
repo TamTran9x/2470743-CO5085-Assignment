@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CO5085 — A1: CNN vs Transformer trên CIFAR-100 — Trần Hoài Tâm</title>
+<style>
+  :root {
+    --bg: #fcfcfb; --surface: #ffffff; --ink: #0b0b0b; --ink-2: #52514e; --muted: #8a8984;
+    --line: #e4e3df; --accent: #2a78d6; --accent-ink: #1c5cab; --tag: #eef4fc;
+    --cnn: #2a78d6; --vit: #eb6834;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413; --surface: #1d1d1b; --ink: #f5f4ef; --ink-2: #c3c2b7; --muted: #8f8e86;
+      --line: #33332f; --accent: #3987e5; --accent-ink: #86b6ef; --tag: #1a2a40;
+      --cnn: #3987e5; --vit: #d95926;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 48px 16px 64px; }
+  .course { color: var(--ink-2); font-size: 14px; letter-spacing: .02em; margin: 0 0 6px; }
+  .course a { color: var(--accent-ink); }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+  .members { color: var(--ink-2); margin: 0 0 28px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .btn {
+    display: inline-block; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600;
+    border: 1px solid var(--line); color: var(--ink); background: var(--surface);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn:hover { border-color: var(--accent); }
+  h2 { font-size: 20px; margin: 40px 0 12px; }
+  h3 { font-size: 16px; margin: 20px 0 6px; }
+  p, li { color: var(--ink-2); }
+  strong { color: var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .grid.stats { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .card .k { font-size: 13px; color: var(--muted); margin: 0; }
+  .card .v { font-size: 17px; font-weight: 600; color: var(--ink); margin: 2px 0 0; }
+  .card .s { font-size: 14px; color: var(--ink-2); margin: 4px 0 0; }
+  .stat { font-size: 30px; font-weight: 650; color: var(--ink); line-height: 1.1; margin: 4px 0 0; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+  .dot.cnn { background: var(--cnn); } .dot.vit { background: var(--vit); }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  th:nth-child(-n+2), td:nth-child(-n+2) { text-align: left; }
+  th { color: var(--ink-2); font-weight: 600; background: var(--bg); }
+  tr:last-child td { border-bottom: none; }
+  td.best { font-weight: 700; color: var(--ink); }
+  figure { margin: 16px 0 24px; }
+  figure img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+  figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  code { overflow-wrap: anywhere; font-size: 14px; background: var(--tag); color: var(--accent-ink); padding: 1px 5px; border-radius: 4px; }
+  pre { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; overflow-x: auto; font-size: 13px; }
+  pre code { background: none; padding: 0; color: var(--ink); }
+  footer { margin-top: 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="course"><a href="https://tamtran9x.github.io/2470743-CO5085-Exercise1/">CO5085</a> · Học sâu và ứng dụng trong thị giác máy tính · HK261 (2026–2027)</p>
+  <h1>A1 — CNN vs Transformer trên CIFAR-100</h1>
+  <p class="members">Học viên thực hiện: Trần Hoài Tâm · MSHV 2470743 (làm cá nhân) · Giảng viên: Lê Thành Sách, Nguyễn Quốc Minh</p>
+
+  <div class="links">
+    <a class="btn primary" href="report/report.pdf">Báo cáo PDF</a>
+    <a class="btn" href="https://github.com/TamTran9x/2470743-CO5085-Assignment/tree/main/A1">Mã nguồn A1 trên GitHub</a>
+    <a class="btn" href="https://tamtran9x.github.io/2470743-CO5085-Exercise1/">Trang chung</a>
+  </div>
+
+  <div class="grid">
+    <div class="card"><p class="k">Dataset</p><p class="v">CIFAR-100</p><p class="s">100 lớp · 20 superclass · 45k train / 5k val / 10k test</p></div>
+    <div class="card"><p class="k"><span class="dot cnn"></span>CNN</p><p class="v">ResNet-50</p><p class="s"><code>resnet50.tv2_in1k</code> · 23,7M tham số · 4,1 GMACs</p></div>
+    <div class="card"><p class="k"><span class="dot vit"></span>Transformer</p><p class="v">DeiT-S (ViT-S/16)</p><p class="s"><code>deit_small_patch16_224.fb_in1k</code> · 21,7M · 4,6 GMACs</p></div>
+  </div>
+
+  <!-- HIGHLIGHTS -->
+  <h2>Kết quả chính</h2>
+  <div class="grid stats">
+    <div class="card"><p class="k"><span class="dot vit"></span>Tốt nhất · DeiT-S full fine-tune</p><p class="stat">88,57%</p><p class="s">top-1 test · hơn ResNet-50 full fine-tune 2,56 điểm (McNemar p &lt; 0,001)</p></div>
+    <div class="card"><p class="k"><span class="dot cnn"></span>ResNet-50 full fine-tune</p><p class="stat">86,01%</p><p class="s">freeze một phần chỉ kém 0,48 điểm nhưng nhanh hơn 43%, ít bộ nhớ hơn 60%</p></div>
+    <div class="card"><p class="k">ViT from scratch</p><p class="stat">48,26%</p><p class="s">thấp hơn CNN from scratch 23 điểm; pretraining tăng 40 điểm cho DeiT-S, 15 điểm cho ResNet-50</p></div>
+    <div class="card"><p class="k">Ensemble CNN + ViT</p><p class="stat">89,67%</p><p class="s">trung bình softmax hai mô hình full fine-tune, không huấn luyện thêm</p></div>
+  </div>
+  <!-- /HIGHLIGHTS -->
+
+  <h2>1. Dataset và EDA</h2>
+  <p>CIFAR-100 (Krizhevsky, 2009) có 60.000 ảnh màu 32×32, 100 lớp cân bằng (500 train + 100 test mỗi lớp), gom thành 20 superclass × 5 lớp. Dữ liệu được tải từ mirror chính thức <code>uoft-cs/cifar100</code> trên Hugging Face. Tác giả không công bố license chính thức; tập này công khai cho nghiên cứu và giảng dạy. Chọn CIFAR-100 vì có trong danh sách gợi ý của đề, khó hơn CIFAR-10 nhiều (nhiều lớp gần nhau trong cùng superclass), và ảnh 32×32 khác xa ImageNet nên khác biệt giữa freeze và fine-tune hiện rõ.</p>
+  <ul>
+    <li><strong>Split:</strong> 45.000 train / 5.000 validation (tách phân tầng 50 ảnh/lớp, seed 0, từ tập train chính thức) / 10.000 test chính thức, chỉ dùng một lần để đánh giá checkpoint đã chọn theo validation.</li>
+    <li><strong>Cân bằng lớp:</strong> 450 / 50 / 100 ảnh mỗi lớp, nên accuracy ≈ macro-F1.</li>
+    <li><strong>Thống kê pixel (train):</strong> mean (0,507, 0,487, 0,441), std (0,267, 0,256, 0,276).</li>
+  </ul>
+  <figure><img src="figures/eda_samples.png" alt="Lưới 100 ảnh mẫu, mỗi lớp một ảnh" loading="lazy"><figcaption>Mỗi lớp một ảnh ngẫu nhiên từ tập train.</figcaption></figure>
+
+  <h2>2. DataLoader và augmentation</h2>
+  <p>Toàn bộ dataset (~180 MB uint8) được nạp lên GPU một lần; mỗi batch được augment, resize và chuẩn hoá ngay trên GPU (<code>src/data.py</code>), tránh nút thắt DataLoader đa tiến trình trên Windows. Pipeline giống hệt cho cả 8 cấu hình:</p>
+  <ol>
+    <li>Train: random crop 32×32 (zero-pad 4) và lật ngang ngẫu nhiên, độc lập từng ảnh.</li>
+    <li>Resize bilinear lên <strong>224×224</strong>, đúng độ phân giải pretrain của cả hai backbone (DeiT-S: 196 patch token).</li>
+    <li>Chuẩn hoá mean/std ImageNet. Val/test: chỉ resize và chuẩn hoá.</li>
+  </ol>
+  <figure><img src="figures/aug_examples.png" alt="Ảnh gốc, ba lần augment và đầu vào 224x224" loading="lazy"><figcaption>Ảnh gốc → crop+flip ngẫu nhiên → đầu vào 224×224 của mô hình.</figcaption></figure>
+
+  <h2>3. Protocol thí nghiệm</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Chế độ</th><th>Khởi tạo</th><th>Phần đóng băng (ResNet-50 / DeiT-S)</th><th>Epoch</th><th>LR backbone / head</th></tr>
+    <tr><td>From scratch</td><td>Ngẫu nhiên</td><td style="text-align:left">–</td><td>30</td><td>5e-4 / 5e-4</td></tr>
+    <tr><td>Freeze backbone</td><td>ImageNet-1k</td><td style="text-align:left">tất cả trừ head</td><td>10</td><td>– / 1e-3</td></tr>
+    <tr><td>Freeze một phần</td><td>ImageNet-1k</td><td style="text-align:left">stem + layer1–2 / patch-embed + block 0–5</td><td>10</td><td>1e-4 / 1e-3</td></tr>
+    <tr><td>Full fine-tune</td><td>ImageNet-1k</td><td style="text-align:left">–</td><td>10</td><td>1e-4 / 1e-3</td></tr>
+  </table></div>
+  <p>Chung: AdamW, weight decay 0,05, batch 64, cosine + warmup, label smoothing 0,1, gradient clipping 1,0, bfloat16, seed 42. Chọn checkpoint có val accuracy cao nhất rồi đánh giá test một lần. Phần cứng: RTX 3050 Laptop 6 GB.</p>
+
+  <h2>4. Kết quả so sánh</h2>
+  <!-- RESULTS_TABLE -->
+<div class="table-wrap"><table>
+<tr><th>Model</th><th>Chế độ</th><th>Top-1 (%)</th><th>Top-5 (%)</th><th>Macro-F1 (%)</th><th>Trainable (M)</th><th>Train (phút)</th><th>Mem (GB)</th></tr>
+<tr><td><span class="dot cnn"></span>ResNet-50 (CNN)</td><td>From scratch</td><td>71,37</td><td>90,48</td><td>71,27</td><td>23,71</td><td>100,4</td><td>3,26</td></tr>
+<tr><td><span class="dot vit"></span>DeiT-S (ViT)</td><td>From scratch</td><td>48,26</td><td>71,55</td><td>47,76</td><td>21,70</td><td>85,5</td><td>2,62</td></tr>
+<tr><td><span class="dot cnn"></span>ResNet-50 (CNN)</td><td>Freeze backbone</td><td>75,19</td><td>94,62</td><td>75,17</td><td>0,20</td><td>10,9</td><td>0,64</td></tr>
+<tr><td><span class="dot vit"></span>DeiT-S (ViT)</td><td>Freeze backbone</td><td>74,52</td><td>94,28</td><td>74,51</td><td>0,04</td><td>8,6</td><td>0,45</td></tr>
+<tr><td><span class="dot cnn"></span>ResNet-50 (CNN)</td><td>Freeze một phần</td><td>85,53</td><td>97,15</td><td>85,53</td><td>22,27</td><td>19,1</td><td>1,29</td></tr>
+<tr><td><span class="dot vit"></span>DeiT-S (ViT)</td><td>Freeze một phần</td><td>85,26</td><td>96,92</td><td>85,22</td><td>10,69</td><td>18,6</td><td>1,48</td></tr>
+<tr><td><span class="dot cnn"></span>ResNet-50 (CNN)</td><td>Full fine-tune</td><td class="best">86,01</td><td>97,66</td><td>86,03</td><td>23,71</td><td>33,4</td><td>3,26</td></tr>
+<tr><td><span class="dot vit"></span>DeiT-S (ViT)</td><td>Full fine-tune</td><td class="best">88,57</td><td>97,94</td><td>88,60</td><td>21,70</td><td>28,8</td><td>2,62</td></tr>
+</table></div>
+<p style="font-size:13px;color:var(--muted)">Test 10.000 ảnh; in đậm: chế độ tốt nhất của mỗi họ. Thời gian/bộ nhớ đo trên RTX 3050 Laptop 6 GB, batch 64, 224×224.</p><!-- /RESULTS_TABLE -->
+  <figure><img src="figures/fig_test_acc.png" alt="Biểu đồ cột accuracy test theo chế độ" loading="lazy"><figcaption>Top-1 accuracy trên test theo chế độ huấn luyện.</figcaption></figure>
+  <figure><img src="figures/fig_curves.png" alt="Đường học validation và train accuracy" loading="lazy"><figcaption>Validation accuracy (trên) và train accuracy (dưới) theo epoch.</figcaption></figure>
+  <figure><img src="figures/fig_cost.png" alt="Accuracy theo thời gian train và bộ nhớ GPU đỉnh" loading="lazy"><figcaption>Accuracy theo chi phí: thời gian huấn luyện và bộ nhớ GPU đỉnh. Màu là họ mô hình, hình dạng điểm là chế độ.</figcaption></figure>
+  <p><strong>Kiểm định McNemar</strong> trên cùng 10.000 ảnh test: chênh lệch ResNet-50 – DeiT-S có ý nghĩa ở from scratch và full fine-tune (p &lt; 0,001), nhưng <strong>không</strong> có ý nghĩa ở freeze backbone (p = 0,13) và freeze một phần (p = 0,46).</p>
+
+  <h3>Phân tích lỗi</h3>
+  <ul>
+    <li><strong>Lỗi "hợp lý":</strong> 51,5% lỗi của DeiT-S và 48,1% lỗi của ResNet-50 (full fine-tune) là nhầm sang lớp anh em trong cùng superclass (ngẫu nhiên chỉ là 4%). Tỉ lệ này tăng theo chất lượng mô hình: DeiT-S from scratch chỉ 22,6%.</li>
+    <li><strong>Cặp khó nhất:</strong> maple ↔ oak tree, nhóm people (girl là lớp khó nhất, 63%), otter ↔ seal. Ở 32×32, hình dạng lá hay khuôn mặt gần như mất hết.</li>
+    <li><strong>Nhãn mơ hồ:</strong> nhiều lỗi tự tin nhất thực ra là ảnh có nhiều đối tượng hoặc nhãn khó phân định (ảnh "plain" có cây lớn, "girl"/"boy" là trẻ nhỏ bị đoán baby).</li>
+    <li><strong>CNN vs ViT:</strong> DeiT-S thắng với cách biệt lớn ở các lớp cần hình dạng tổng thể (willow tree +13, possum +12, lobster +10 điểm); ResNet-50 thắng tối đa 5 điểm, ở một số lớp có kết cấu/màu sắc đặc trưng (tiger, orange). Hai họ chỉ cùng sai 7,3% ảnh, nên ensemble đạt 89,67%.</li>
+  </ul>
+  <figure><img src="figures/fig_superclass_confusion.png" alt="Confusion matrix cấp superclass" loading="lazy"><figcaption>Confusion matrix cấp superclass của mô hình tốt nhất mỗi họ: ô màu là % ảnh bị nhầm sang superclass khác, số trên đường chéo là accuracy.</figcaption></figure>
+  <figure><img src="figures/fig_confusion_full.png" alt="Confusion matrix 100 lớp, chỉ lỗi" loading="lazy"><figcaption>Confusion matrix 100 lớp (đã bỏ đường chéo), sắp theo superclass: lỗi tập trung trong các khối superclass.</figcaption></figure>
+  <figure><img src="figures/fig_per_class_diff.png" alt="Chênh lệch accuracy theo lớp giữa DeiT-S và ResNet-50" loading="lazy"><figcaption>Những lớp có chênh lệch accuracy lớn nhất giữa hai họ.</figcaption></figure>
+  <figure><img src="figures/fig_misclassified.png" alt="Các lỗi tự tin nhất" loading="lazy"><figcaption>Các lỗi tự tin nhất của mô hình tốt nhất.</figcaption></figure>
+
+  <h2>5. Thảo luận</h2>
+  <!-- DISCUSSION -->
+  <h3>Pretrained so với from scratch</h3>
+  <p>Với 45.000 ảnh, cả hai mô hình from scratch đều overfit nặng: train accuracy 98–99,7% nhưng val chỉ 71% (ResNet-50) và 47% (DeiT-S). Pretraining trên ImageNet-1k tăng 14,6 điểm cho ResNet-50 và 40,3 điểm cho DeiT-S, với chỉ một phần ba số epoch. Chỉ một lớp tuyến tính trên đặc trưng DeiT-S đóng băng (0,04M tham số, 8,6 phút) đã đạt 74,52%, hơn ResNet-50 from scratch train 100 phút.</p>
+  <h3>Khi nào ViT cần pretraining?</h3>
+  <p>Trong thí nghiệm này: luôn cần. Từ epoch 18, val accuracy của DeiT-S from scratch đứng yên ở 46–47% trong khi train accuracy tăng lên 99,7%; mô hình học thuộc chứ không thiếu epoch. ViT không có inductive bias cục bộ/tịnh tiến như convolution nên cần rất nhiều dữ liệu, hoặc augmentation và regularization mạnh cùng lịch huấn luyện dài (như DeiT). Khi đã pretrain trên cùng ImageNet-1k, DeiT-S lại vượt ResNet-50 2,56 điểm.</p>
+  <h3>Khi nào đóng băng có lợi?</h3>
+  <ul>
+    <li><strong>Freeze backbone:</strong> nhanh hơn ~3 lần, ít bộ nhớ hơn 5 lần, nhưng kém full fine-tune 11–14 điểm do domain gap (ảnh 32×32 phóng to khác xa ImageNet). Mô hình underfit (train ≈ val), nên chỉ hợp khi tài nguyên rất hạn chế hoặc nhiều tác vụ dùng chung backbone.</li>
+    <li><strong>Freeze một phần:</strong> điểm cân bằng tốt nhất cho ResNet-50 (−0,48 điểm, −43% thời gian, −60% bộ nhớ) vì các stage đầu của CNN học đặc trưng chung, dễ chuyển giao. Với DeiT-S thì kém 3,3 điểm: patch embedding và 6 block đầu bị đóng băng không thích nghi được với patch mờ.</li>
+    <li><strong>Full fine-tune:</strong> luôn tốt nhất, và vẫn vừa GPU 6 GB (tối đa 3,26 GB).</li>
+  </ul>
+  <h3>Chi phí</h3>
+  <p>Trên RTX 3050 Laptop, DeiT-S full fine-tune vừa chính xác hơn vừa rẻ hơn ResNet-50: train 261 so với 225 ảnh/s, suy luận 897 so với 705 ảnh/s, bộ nhớ 2,62 so với 3,26 GB, dù GMACs cao hơn một chút.</p>
+  <h3>Hạn chế</h3>
+  <p>Mỗi cấu hình chạy một seed. Công thức from scratch đơn giản (30 epoch, crop + flip), nên kết quả from scratch, nhất là của ViT, là cận dưới. Siêu tham số dùng chung cho hai họ, không tinh chỉnh riêng. Chi tiết trong <a href="report/report.pdf">báo cáo PDF</a> (Mục 6–8).</p>
+  <!-- /DISCUSSION -->
+
+  <h2>Tái lập</h2>
+<pre><code>pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu124
+python -m src.eda
+python -m scripts.run_all
+python -m src.analyze
+python -m scripts.build_report</code></pre>
+
+  <footer>CIFAR-100 · PyTorch 2.5.1 · timm 1.0.30 · Mọi số liệu được sinh tự động từ <code>results/</code>.</footer>
+</main>
+</body>
+</html>

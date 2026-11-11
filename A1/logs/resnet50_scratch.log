@@ -1,0 +1,32 @@
+[resnet50_scratch] params total=23.71M trainable=23.71M GMACs=4.09 train=45000 val=5000 steps/epoch=703
+[resnet50_scratch] ep   1/30 loss 4.207 train_acc 0.0820 val_loss 3.835 val_acc 0.1184 time 202s
+[resnet50_scratch] ep   2/30 loss 3.842 train_acc 0.1437 val_loss 3.464 val_acc 0.1816 time 201s
+[resnet50_scratch] ep   3/30 loss 3.533 train_acc 0.2032 val_loss 3.130 val_acc 0.2218 time 201s
+[resnet50_scratch] ep   4/30 loss 3.201 train_acc 0.2841 val_loss 2.668 val_acc 0.3126 time 201s
+[resnet50_scratch] ep   5/30 loss 2.907 train_acc 0.3558 val_loss 2.541 val_acc 0.3452 time 201s
+[resnet50_scratch] ep   6/30 loss 2.678 train_acc 0.4205 val_loss 2.377 val_acc 0.3860 time 201s
+[resnet50_scratch] ep   7/30 loss 2.482 train_acc 0.4740 val_loss 2.030 val_acc 0.4546 time 201s
+[resnet50_scratch] ep   8/30 loss 2.315 train_acc 0.5254 val_loss 1.883 val_acc 0.5010 time 226s
+[resnet50_scratch] ep   9/30 loss 2.185 train_acc 0.5670 val_loss 1.814 val_acc 0.5202 time 204s
+[resnet50_scratch] ep  10/30 loss 2.059 train_acc 0.6062 val_loss 1.552 val_acc 0.5766 time 200s
+[resnet50_scratch] ep  11/30 loss 1.953 train_acc 0.6383 val_loss 1.535 val_acc 0.5900 time 200s
+[resnet50_scratch] ep  12/30 loss 1.844 train_acc 0.6783 val_loss 1.444 val_acc 0.6068 time 199s
+[resnet50_scratch] ep  13/30 loss 1.756 train_acc 0.7066 val_loss 1.370 val_acc 0.6368 time 199s
+[resnet50_scratch] ep  14/30 loss 1.674 train_acc 0.7349 val_loss 1.381 val_acc 0.6222 time 199s
+[resnet50_scratch] ep  15/30 loss 1.598 train_acc 0.7591 val_loss 1.279 val_acc 0.6550 time 199s
+[resnet50_scratch] ep  16/30 loss 1.516 train_acc 0.7905 val_loss 1.362 val_acc 0.6364 time 199s
+[resnet50_scratch] ep  17/30 loss 1.443 train_acc 0.8157 val_loss 1.290 val_acc 0.6610 time 199s
+[resnet50_scratch] ep  18/30 loss 1.373 train_acc 0.8423 val_loss 1.255 val_acc 0.6706 time 199s
+[resnet50_scratch] ep  19/30 loss 1.302 train_acc 0.8699 val_loss 1.197 val_acc 0.6886 time 199s
+[resnet50_scratch] ep  20/30 loss 1.241 train_acc 0.8949 val_loss 1.192 val_acc 0.6966 time 199s
+[resnet50_scratch] ep  21/30 loss 1.188 train_acc 0.9130 val_loss 1.173 val_acc 0.6990 time 199s
+[resnet50_scratch] ep  22/30 loss 1.140 train_acc 0.9325 val_loss 1.185 val_acc 0.6952 time 199s
+[resnet50_scratch] ep  23/30 loss 1.100 train_acc 0.9476 val_loss 1.177 val_acc 0.7050 time 199s
+[resnet50_scratch] ep  24/30 loss 1.067 train_acc 0.9587 val_loss 1.169 val_acc 0.7066 time 199s
+[resnet50_scratch] ep  25/30 loss 1.037 train_acc 0.9697 val_loss 1.168 val_acc 0.7082 time 199s
+[resnet50_scratch] ep  26/30 loss 1.017 train_acc 0.9752 val_loss 1.168 val_acc 0.7088 time 199s
+[resnet50_scratch] ep  27/30 loss 1.001 train_acc 0.9808 val_loss 1.167 val_acc 0.7120 time 199s
+[resnet50_scratch] ep  28/30 loss 0.992 train_acc 0.9818 val_loss 1.168 val_acc 0.7130 time 199s
+[resnet50_scratch] ep  29/30 loss 0.986 train_acc 0.9845 val_loss 1.171 val_acc 0.7070 time 199s
+[resnet50_scratch] ep  30/30 loss 0.985 train_acc 0.9848 val_loss 1.161 val_acc 0.7116 time 199s
+[resnet50_scratch] TEST acc 0.7137 top5 0.9048 macroF1 0.7127 (best epoch 28, train 100.4 min, peak 3.26 GB)

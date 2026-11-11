@@ -1,0 +1,13 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[resnet50_partial] params total=23.71M trainable=22.27M GMACs=4.09 train=45000 val=5000 steps/epoch=703
+[resnet50_partial] ep   1/10 loss 2.443 train_acc 0.5430 val_loss 0.844 val_acc 0.7720 time 116s
+[resnet50_partial] ep   2/10 loss 1.358 train_acc 0.8155 val_loss 0.691 val_acc 0.8190 time 115s
+[resnet50_partial] ep   3/10 loss 1.144 train_acc 0.8852 val_loss 0.703 val_acc 0.8198 time 115s
+[resnet50_partial] ep   4/10 loss 1.021 train_acc 0.9290 val_loss 0.677 val_acc 0.8280 time 115s
+[resnet50_partial] ep   5/10 loss 0.943 train_acc 0.9565 val_loss 0.650 val_acc 0.8356 time 115s
+[resnet50_partial] ep   6/10 loss 0.892 train_acc 0.9738 val_loss 0.665 val_acc 0.8382 time 115s
+[resnet50_partial] ep   7/10 loss 0.855 train_acc 0.9848 val_loss 0.662 val_acc 0.8436 time 115s
+[resnet50_partial] ep   8/10 loss 0.830 train_acc 0.9924 val_loss 0.671 val_acc 0.8454 time 115s
+[resnet50_partial] ep   9/10 loss 0.820 train_acc 0.9948 val_loss 0.671 val_acc 0.8442 time 115s
+[resnet50_partial] ep  10/10 loss 0.814 train_acc 0.9967 val_loss 0.671 val_acc 0.8436 time 115s
+[resnet50_partial] TEST acc 0.8553 top5 0.9715 macroF1 0.8553 (best epoch 8, train 19.1 min, peak 1.29 GB)
