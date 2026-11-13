@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CO5085 — Bài tập lớn A1–A2 — Trần Hoài Tâm</title>
+<style>
+  :root {
+    --bg: #fcfcfb; --surface: #ffffff; --ink: #0b0b0b; --ink-2: #52514e; --muted: #8a8984;
+    --line: #e4e3df; --accent: #2a78d6; --accent-ink: #1c5cab; --tag: #eef4fc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413; --surface: #1d1d1b; --ink: #f5f4ef; --ink-2: #c3c2b7; --muted: #8f8e86;
+      --line: #33332f; --accent: #3987e5; --accent-ink: #86b6ef; --tag: #1a2a40;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
+  .course { color: var(--ink-2); font-size: 14px; letter-spacing: .02em; margin: 0 0 6px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+  .members { color: var(--ink-2); margin: 0 0 28px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .btn {
+    display: inline-block; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600;
+    border: 1px solid var(--line); color: var(--ink); background: var(--surface);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn:hover { border-color: var(--accent); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px; margin-bottom: 12px;
+  }
+  .card h3 { margin: 0 0 4px; font-size: 16px; }
+  .card h3 a { color: inherit; }
+  .card p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; font-size: 13px; }
+  .tag { background: var(--tag); color: var(--accent-ink); padding: 2px 8px; border-radius: 999px; }
+  .tag.plain { background: transparent; color: var(--muted); padding-left: 0; }
+  a.inline { color: var(--accent-ink); }
+  footer { margin-top: 40px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="course">CO5085 · Học sâu và ứng dụng trong thị giác máy tính · HK261 (2026–2027)</p>
+  <h1>Bài tập lớn A1–A2</h1>
+  <!-- NHÓM: nếu tên nhóm đăng ký trên LMS khác, sửa dòng "Nhóm" bên dưới -->
+  <p class="members">Nhóm: Trần Hoài Tâm (nhóm một thành viên, làm cá nhân)<br>
+    Thành viên: Trần Hoài Tâm · MSHV 2470743<br>
+    Giảng viên: Lê Thành Sách, Nguyễn Quốc Minh</p>
+
+  <div class="links">
+    <a class="btn primary" href="A2/">Trang A2</a>
+    <a class="btn" href="A1/">Trang A1</a>
+    <a class="btn" href="https://tamtran9x.github.io/2470743-CO5085-Exercise1/">Trang chung (E1–E3, A1, A2)</a>
+    <a class="btn" href="https://github.com/TamTran9x/2470743-CO5085-Assignment">Mã nguồn trên GitHub</a>
+  </div>
+
+  <div class="card">
+    <h3><a href="A1/">A1 — CNN vs Transformer trên CIFAR-100</a></h3>
+    <p>ResNet-50 và DeiT-S trên CIFAR-100 ở bốn chế độ: from scratch, freeze backbone, freeze một phần, full fine-tune. So sánh accuracy, chi phí và phân tích lỗi.</p>
+    <div class="meta"><span class="tag">Hạn 09/11/2026</span><a class="inline" href="A1/">Trang A1</a><a class="inline" href="A1/report/report.pdf">Báo cáo PDF</a><a class="inline" href="https://github.com/TamTran9x/2470743-CO5085-Assignment/tree/main/A1">Thư mục A1</a></div>
+  </div>
+  <div class="card">
+    <h3><a href="A2/">A2 — Phân đoạn ngữ nghĩa trên Pascal VOC 2012: SegFormer so với DeepLabV3+</a></h3>
+    <p>Chủ đề: phân đoạn ảnh. Paper phân tích: SegFormer (Xie và cộng sự, NeurIPS 2021). Tự cài đặt SegFormer và DeepLabV3+, so sánh 6 cấu hình trên VOC 2012 + SBD, đối chiếu các nhận định của paper (kích thước mô hình, decoder MLP, receptive field, độ bền với nhiễu).</p>
+    <div class="meta"><span class="tag">Hạn 16/11/2026</span><a class="inline" href="A2/">Trang A2</a><a class="inline" href="A2/report/report.pdf">Báo cáo PDF</a><a class="inline" href="https://github.com/TamTran9x/2470743-CO5085-Assignment/tree/main/A2">Thư mục A2</a></div>
+  </div>
+
+  <footer>CIFAR-100 (A1) · Pascal VOC 2012 + SBD (A2) · PyTorch · timm</footer>
+</main>
+</body>
+</html>
