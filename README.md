@@ -9,4 +9,4 @@ Học viên: **Trần Hoài Tâm** – MSHV 2470743 (làm cá nhân) · Giảng 
 | Bài | Nội dung | Thư mục | Trang | Báo cáo |
 |---|---|---|---|---|
 | A1 | CNN vs Transformer trên CIFAR-100 (ResNet-50, DeiT-S; scratch / freeze / fine-tune) | [`A1/`](A1/) | [A1](https://tamtran9x.github.io/2470743-CO5085-Assignment/A1/) | [PDF](A1/report/report.pdf) |
-| A2 | Sẽ cập nhật | – | – | – |
+| A2 | Phân đoạn ngữ nghĩa trên Pascal VOC 2012 (SegFormer so với DeepLabV3+) và phân tích paper SegFormer | [`A2/`](A2/) | [A2](https://tamtran9x.github.io/2470743-CO5085-Assignment/A2/) | [PDF](A2/report/report.pdf) |
