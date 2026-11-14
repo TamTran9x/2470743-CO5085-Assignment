@@ -1,7 +1,7 @@
 # CO5085 — Bài tập lớn A1–A2
 
 Học sâu và ứng dụng trong thị giác máy tính · HK261 (2026–2027)
-Học viên: **Trần Hoài Tâm** – MSHV 2470743 (làm cá nhân) · Giảng viên: Lê Thành Sách, Nguyễn Quốc Minh
+Học viên: **Trần Hoài Tâm** – MSHV 2470743 · Giảng viên: Lê Thành Sách, Nguyễn Quốc Minh
 
 - Trang chung (E1–E3, A1–A2): https://tamtran9x.github.io/2470743-CO5085-Exercise1/
 - Trang bài tập lớn: https://tamtran9x.github.io/2470743-CO5085-Assignment/

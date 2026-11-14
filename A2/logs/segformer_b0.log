@@ -1,0 +1,13 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[segformer_b0] params 3.72M (encoder 3.32M, decoder 0.40M) GMACs@512=3.6 train=10082 minival=500 iters=10000 (~7.9 epochs)
+[segformer_b0] it   1000/10000 loss 0.885 train_acc 75.70 minival mIoU 51.29 44.5 img/s  elapsed 3.0 min
+[segformer_b0] it   2000/10000 loss 0.458 train_acc 85.15 minival mIoU 54.94 46.0 img/s  elapsed 5.9 min
+[segformer_b0] it   3000/10000 loss 0.402 train_acc 86.77 minival mIoU 62.13 46.0 img/s  elapsed 8.8 min
+[segformer_b0] it   4000/10000 loss 0.381 train_acc 87.51 minival mIoU 61.81 45.8 img/s  elapsed 11.7 min
+[segformer_b0] it   5000/10000 loss 0.345 train_acc 88.38 minival mIoU 64.10 45.9 img/s  elapsed 14.6 min
+[segformer_b0] it   6000/10000 loss 0.315 train_acc 89.15 minival mIoU 63.90 45.9 img/s  elapsed 17.5 min
+[segformer_b0] it   7000/10000 loss 0.314 train_acc 89.11 minival mIoU 64.95 45.9 img/s  elapsed 20.4 min
+[segformer_b0] it   8000/10000 loss 0.291 train_acc 89.95 minival mIoU 63.72 46.0 img/s  elapsed 23.3 min
+[segformer_b0] it   9000/10000 loss 0.279 train_acc 90.38 minival mIoU 64.25 46.0 img/s  elapsed 26.2 min
+[segformer_b0] it  10000/10000 loss 0.270 train_acc 90.65 minival mIoU 64.53 45.9 img/s  elapsed 29.1 min
+[segformer_b0] VOC12 val: mIoU 69.57 mDice 80.63 pixel acc 92.87 boundary mIoU 58.17 | train 29.1 min, peak 1.87 GB, 106.1 FPS

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CO5085 — A2: Phân đoạn ngữ nghĩa trên Pascal VOC 2012 — Trần Hoài Tâm</title>
+<style>
+  :root {
+    --bg: #fcfcfb; --surface: #ffffff; --ink: #0b0b0b; --ink-2: #52514e; --muted: #8a8984;
+    --line: #e4e3df; --accent: #2a78d6; --accent-ink: #1c5cab; --tag: #eef4fc;
+    --cnn: #2a78d6; --vit: #eb6834; --scratch: #898781;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413; --surface: #1d1d1b; --ink: #f5f4ef; --ink-2: #c3c2b7; --muted: #8f8e86;
+      --line: #33332f; --accent: #3987e5; --accent-ink: #86b6ef; --tag: #1a2a40;
+      --cnn: #3987e5; --vit: #d95926; --scratch: #8f8e86;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 880px; margin: 0 auto; padding: 48px 16px 64px; }
+  .course { color: var(--ink-2); font-size: 14px; letter-spacing: .02em; margin: 0 0 6px; }
+  .course a, p a, li a, .members a { color: var(--accent-ink); }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+  .members { color: var(--ink-2); margin: 0 0 28px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .btn {
+    display: inline-block; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600;
+    border: 1px solid var(--line); color: var(--ink); background: var(--surface);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn:hover { border-color: var(--accent); }
+  h2 { font-size: 20px; margin: 40px 0 12px; }
+  h3 { font-size: 16px; margin: 20px 0 6px; }
+  p, li { color: var(--ink-2); }
+  strong { color: var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .grid.stats { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .card .k { font-size: 13px; color: var(--muted); margin: 0; }
+  .card .v { font-size: 17px; font-weight: 600; color: var(--ink); margin: 2px 0 0; }
+  .card .s { font-size: 14px; color: var(--ink-2); margin: 4px 0 0; }
+  .stat { font-size: 30px; font-weight: 650; color: var(--ink); line-height: 1.1; margin: 4px 0 0; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+  .dot.cnn { background: var(--cnn); } .dot.vit { background: var(--vit); } .dot.scratch { background: var(--scratch); }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  th:first-child, td:first-child, table.text th, table.text td { text-align: left; }
+  table.text td { white-space: normal; }
+  th { color: var(--ink-2); font-weight: 600; background: var(--bg); }
+  tr:last-child td { border-bottom: none; }
+  td.best { font-weight: 700; color: var(--ink); }
+  figure { margin: 16px 0 24px; }
+  figure img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+  figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  code { overflow-wrap: anywhere; font-size: 14px; background: var(--tag); color: var(--accent-ink); padding: 1px 5px; border-radius: 4px; }
+  pre { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; overflow-x: auto; font-size: 13px; }
+  pre code { background: none; padding: 0; color: var(--ink); }
+  .note { font-size: 13px; color: var(--muted); }
+  footer { margin-top: 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="course"><a href="https://tamtran9x.github.io/2470743-CO5085-Exercise1/">CO5085</a> · Học sâu và ứng dụng trong thị giác máy tính · HK261 (2026–2027)</p>
+  <h1>A2 — Phân đoạn ngữ nghĩa trên Pascal VOC 2012: SegFormer so với DeepLabV3+</h1>
+  <p class="members">Nhóm: Trần Hoài Tâm (một thành viên) · MSHV 2470743 · Giảng viên: Lê Thành Sách, Nguyễn Quốc Minh<br>
+    <a href="https://tamtran9x.github.io/2470743-CO5085-Exercise1/">Trang chung</a> · <a href="https://tamtran9x.github.io/2470743-CO5085-Exercise1/#e1">E1–E3</a> · <a href="https://tamtran9x.github.io/2470743-CO5085-Assignment/A1/">A1</a> · A2</p>
+
+  <div class="links">
+    <a class="btn primary" href="report/report.pdf">Báo cáo PDF</a>
+    <a class="btn" href="https://github.com/TamTran9x/2470743-CO5085-Assignment/tree/main/A2">Mã nguồn A2 trên GitHub</a>
+    <a class="btn" href="https://arxiv.org/abs/2105.15203">Paper SegFormer</a>
+    <a class="btn" href="#demo">Demo</a>
+    <a class="btn" href="https://tamtran9x.github.io/2470743-CO5085-Exercise1/">Trang chung</a>
+  </div>
+
+  <div class="grid">
+    <div class="card"><p class="k">Chủ đề đã chọn</p><p class="v">Phân đoạn ảnh (semantic segmentation)</p><p class="s">Chủ đề 1 của đề A2 · metric chính: mIoU, kèm Dice</p></div>
+    <div class="card"><p class="k">Paper được phân tích</p><p class="v">SegFormer</p><p class="s">E. Xie, W. Wang, Z. Yu, A. Anandkumar, J. M. Alvarez, P. Luo. <em>SegFormer: Simple and Efficient Design for Semantic Segmentation with Transformers.</em> NeurIPS 2021. <a href="https://arxiv.org/abs/2105.15203">arXiv:2105.15203</a></p></div>
+    <div class="card"><p class="k">Dataset</p><p class="v">Pascal VOC 2012 + SBD</p><p class="s">21 lớp · {{ n(D['meta']['train']) }} train / {{ n(D['meta']['minival']) }} minival / {{ n(D['meta']['val']) }} val</p></div>
+  </div>
+
+  <h2>Kết quả chính</h2>
+  <div class="grid stats">
+    <div class="card"><p class="k"><span class="dot vit"></span>SegFormer-B2 (tự cài đặt)</p><p class="stat">{{ f(S['segformer_b2'].miou) }}%</p><p class="s">mIoU trên VOC 2012 val · hơn DeepLabV3+ R50 {{ f(pair('segformer_b2', 'deeplabv3plus_r50')['diff']) }} điểm, CI 95% {{ ci(pair('segformer_b2', 'deeplabv3plus_r50')) }}</p></div>
+    <div class="card"><p class="k"><span class="dot cnn"></span>DeepLabV3+ ResNet-50</p><p class="stat">{{ f(S['deeplabv3plus_r50'].miou) }}%</p><p class="s">cùng ~27 triệu tham số, cùng công thức huấn luyện · nhanh hơn khi suy luận ({{ f(S['deeplabv3plus_r50'].fps, 0) }} so với {{ f(S['segformer_b2'].fps, 0) }} FPS)</p></div>
+    <div class="card"><p class="k"><span class="dot cnn"></span>ResNet-50 + decoder MLP</p><p class="stat">{{ f(S['resnet50_mlp'].miou) }}%</p><p class="s">cùng decoder của SegFormer nhưng encoder CNN: kém SegFormer-B2 {{ f(pair('segformer_b2', 'resnet50_mlp')['diff'], 1) }} điểm, đúng như Bảng 1d của paper</p></div>
+    <div class="card"><p class="k">Độ bền với nhiễu ảnh</p><p class="stat">{{ f(100 * R['summary']['segformer_b2']['retention'], 0) }}% so với {{ f(100 * R['summary']['deeplabv3plus_r50']['retention'], 0) }}%</p><p class="s">mIoU giữ lại trung bình trên 27 điều kiện nhiễu: SegFormer-B2 so với DeepLabV3+ R50</p></div>
+  </div>
+
+  <h2>1. Bài toán và tập dữ liệu (EDA)</h2>
+  <p>Phân đoạn ngữ nghĩa gán cho mỗi pixel một trong 21 lớp (20 lớp đối tượng và nền). <strong>Pascal VOC 2012</strong> chỉ có {{ n(D['meta']['voc12_train']) }} ảnh train có nhãn phân đoạn, nên bài tập ghép thêm <strong>SBD</strong> (Hariharan và cộng sự, 2011) để có tập "train_aug" quen thuộc gồm {{ n(D['meta']['pool_train_aug']) }} ảnh. Cả hai được tải từ máy chủ chính thức và chỉ dùng cho mục đích học tập.</p>
+  <ul>
+    <li><strong>Split:</strong> {{ n(D['meta']['train']) }} train / {{ n(D['meta']['minival']) }} minival (tách từ train_aug, chỉ để vẽ đường học) / {{ n(D['meta']['val']) }} ảnh VOC 2012 val làm tập kiểm tra. {{ n(D['meta']['sbd_overlap_voc12_val']) }} ảnh của SBD trùng với VOC val đã bị loại khỏi tập huấn luyện. Không chọn checkpoint: mỗi run được chấm một lần bằng trọng số cuối.</li>
+    <li><strong>Mất cân bằng lớp:</strong> nền chiếm {{ f(100 * D['splits']['train']['pixel_share'][0], 1) }}% số pixel, <em>person</em> {{ f(100 * D['splits']['train']['pixel_share'][15], 1) }}%, mỗi lớp còn lại chỉ 0,5–3,3%. Vì vậy dùng mIoU thay cho pixel accuracy.</li>
+    <li><strong>Ảnh hướng đối tượng:</strong> trung bình {{ f(D['splits']['train']['classes_per_image_mean']) }} lớp đối tượng mỗi ảnh, đối tượng chiếm {{ f(100 * D['splits']['train']['foreground_share_mean'], 0) }}% diện tích. Khác hẳn ADE20K/Cityscapes mà paper dùng.</li>
+    <li><strong>Hai nguồn nhãn không đồng nhất:</strong> nhãn VOC có viền <em>void</em> và bám sát chi tiết; nhãn SBD ({{ f(100 * D['splits']['train']['n_sbd_labels'] / D['splits']['train']['n_images'], 0) }}% ảnh train) không có <em>void</em> và đường biên thô hơn. Trên {{ n(D['label_sources']['n_images_with_both_labels']) }} ảnh có cả hai, hai bộ nhãn trùng nhau {{ f(100 * D['label_sources']['pixel_agreement_mean'], 1) }}% số pixel.</li>
+  </ul>
+  <figure><img src="figures/eda_samples.png" alt="Ảnh và nhãn thật của VOC 2012 val" loading="lazy"><figcaption>Ảnh và nhãn thật. Viền trắng là nhãn void (255), không tính vào loss và metric.</figcaption></figure>
+  <figure><img src="figures/eda_class_dist.png" alt="Phân bố lớp" loading="lazy"><figcaption>Tỉ lệ pixel theo lớp (thang log), tỉ lệ ảnh chứa lớp, và diện tích trung vị của vùng thuộc lớp.</figcaption></figure>
+  <figure><img src="figures/eda_label_sources.png" alt="Nhãn VOC và nhãn SBD của cùng một ảnh" loading="lazy"><figcaption>Cùng một ảnh với nhãn VOC 2012 (giữa) và nhãn SBD (phải).</figcaption></figure>
+
+  <h2>2. Dataset, DataLoader, augmentation</h2>
+  <p><code>src/data.py</code>: ảnh có kích thước khác nhau nên được giải mã và augment trên CPU bởi 6 worker thường trực; sampler vô hạn vì lịch huấn luyện tính theo vòng lặp. Augmentation theo đúng công thức của paper SegFormer, áp dụng đồng thời cho ảnh và nhãn:</p>
+  <ol>
+    <li>Co giãn ngẫu nhiên tỉ lệ 0,5–2,0 (ảnh: bilinear, nhãn: nearest).</li>
+    <li>Đệm và cắt ngẫu nhiên <strong>512×512</strong>; phần đệm mang nhãn void nên không vào loss.</li>
+    <li>Lật ngang (p = 0,5) và biến đổi màu (độ sáng, tương phản, bão hoà, sắc độ).</li>
+    <li>Chuẩn hoá mean/std ImageNet. Khi đánh giá: chỉ đệm lên 512×512, suy luận single-scale cả ảnh.</li>
+  </ol>
+  <figure><img src="figures/aug_examples.png" alt="Ví dụ augmentation" loading="lazy"><figcaption>Ảnh gốc (có phủ nhãn) và bốn mẫu augment 512×512; vùng xám nhạt là phần đệm.</figcaption></figure>
+
+  <h2>3. Phân tích paper SegFormer</h2>
+  <h3>Phương pháp</h3>
+  <ul>
+    <li><strong>Encoder phân cấp MiT:</strong> bốn stage cho đặc trưng ở độ phân giải 1/4, 1/8, 1/16, 1/32, thay cho đặc trưng một tỉ lệ của ViT.</li>
+    <li><strong>Overlapped patch merging:</strong> giảm độ phân giải bằng tích chập có kernel lớn hơn bước nhảy (7/4 rồi 3/2), giữ tính liên tục giữa các patch.</li>
+    <li><strong>Efficient self-attention:</strong> rút ngắn chuỗi khoá/giá trị R = 64, 16, 4, 1 lần ở bốn stage, đưa chi phí từ O(N²) về O(N²/R).</li>
+    <li><strong>Mix-FFN:</strong> một tích chập depth-wise 3×3 giữa hai lớp tuyến tính của FFN thay cho positional encoding; phần đệm số 0 làm lộ thông tin vị trí.</li>
+    <li><strong>Decoder chỉ gồm MLP:</strong> chiếu bốn đặc trưng về cùng C kênh, phóng về 1/4, nối lại, trộn bằng một lớp tuyến tính rồi phân loại. Loss chỉ là cross-entropy.</li>
+  </ul>
+  <h3>Thí nghiệm và kết luận của paper</h3>
+  <p>Paper thử trên ADE20K, Cityscapes và COCO-Stuff (mIoU, tham số, FLOPs, FPS). SegFormer-B0 với 3,8 triệu tham số đạt 37,4% trên ADE20K, hơn DeepLabV3+ MobileNetV2 (34,0%); SegFormer-B5 đạt 51,8% trên ADE20K và 84,0% trên Cityscapes, hơn SETR dù nhỏ hơn khoảng 4 lần. Các ablation cho thấy: encoder càng lớn càng tốt; decoder không cần rộng; Mix-FFN bền với thay đổi độ phân giải hơn positional encoding; decoder MLP chỉ hiệu quả với encoder Transformer; SegFormer bền với nhiễu ảnh hơn hẳn DeepLabV3+.</p>
+  <h3>Hạn chế</h3>
+  <ul>
+    <li>Phụ thuộc pretraining ImageNet-1k của một backbone mới; paper không có thí nghiệm huấn luyện từ đầu.</li>
+    <li>"Decoder nhẹ" chỉ đúng về số tham số: bước nối 4C kênh ở độ phân giải 1/4 rất tốn FLOPs và bộ nhớ.</li>
+    <li>So sánh với CNN không kiểm soát chặt kích thước và công thức huấn luyện; phân tích receptive field chỉ định tính.</li>
+    <li>Chỉ thử trên dữ liệu phân tích cảnh, không có dữ liệu hướng đối tượng như VOC; không có metric cho đường biên.</li>
+  </ul>
+  <p>Phần đối chiếu từng nhận định với thí nghiệm của bài tập nằm ở Mục 5.</p>
+
+  <h2>4. Pipeline, huấn luyện, so sánh phương pháp</h2>
+  <p><strong>Tự cài đặt.</strong> SegFormer (MiT + decoder MLP) và DeepLabV3+ (ASPP + decoder) được viết lại bằng PyTorch trong <code>src/models.py</code>; chỉ ResNet-50 lấy từ timm. Bản SegFormer nạp được checkpoint chính thức với <code>strict=True</code> và cho nhãn trùng với bản tham chiếu của thư viện <code>transformers</code> ở ít nhất {{ f(100 * min(c['argmax_agreement'] for v in V.values() for c in v['checks']), 2) }}% số pixel (<code>scripts/verify_segformer.py</code>).</p>
+  <p><strong>Decoder gộp.</strong> Cài đặt đúng theo paper, decoder của B2 tạo tensor 3.072 kênh ở độ phân giải 1/4 và vượt 6 GB khi huấn luyện ({{ f(next(r for r in B['literal'] if r['arch'] == 'segformer_b2')['peak_mem_gb'], 1) }} GB). Vì chiếu, nội suy và trộn đều tuyến tính, có thể gộp hai ma trận của mỗi stage thành một tích chập 1×1 rồi cộng các kết quả đã phóng: kết quả không đổi, bộ nhớ còn {{ f(next(r for r in B['merged'] if r['arch'] == 'segformer_b2')['peak_mem_gb'], 1) }} GB và GMACs giảm từ {{ f(next(r for r in B['literal'] if r['arch'] == 'segformer_b2')['gmacs_512'], 1) }} xuống {{ f(next(r for r in B['merged'] if r['arch'] == 'segformer_b2')['gmacs_512'], 1) }}.</p>
+  <p><strong>Protocol</strong> (giống nhau cho mọi run có pretrain): AdamW, learning rate 6e-5 cho encoder và 6e-4 cho decoder, weight decay 0,01, warmup 500 vòng lặp rồi lịch poly, {{ n(S['segformer_b2'].iters) }} vòng lặp với batch 8 (≈ {{ f(S['segformer_b2'].epochs, 1) }} epoch), cắt 512×512, cross-entropy, bfloat16, seed 42. Phần cứng: RTX 3050 Laptop 6 GB.</p>
+  {{ results_table() }}
+  <p class="note">VOC 2012 val, {{ n(D['meta']['val']) }} ảnh, single-scale; in đậm: mIoU cao nhất. Boundary mIoU: chỉ tính trên dải 8 pixel quanh đường biên của nhãn thật. GMACs cho ảnh 512×512; FPS với batch 1; thời gian và bộ nhớ khi huấn luyện batch 8.</p>
+  <figure><img src="figures/fig_miou.png" alt="mIoU của các cấu hình" loading="lazy"><figcaption>mIoU trên VOC 2012 val với khoảng tin cậy 95% (bootstrap theo ảnh).</figcaption></figure>
+  <figure><img src="figures/fig_curves.png" alt="Đường học" loading="lazy"><figcaption>mIoU trên minival và loss huấn luyện theo số vòng lặp.</figcaption></figure>
+
+  <h2>5. Kết quả, thảo luận, hạn chế</h2>
+  <h3>SegFormer-B2 so với DeepLabV3+ ResNet-50 (cùng ~27 triệu tham số)</h3>
+  <ul>
+    <li><strong>SegFormer-B2 hơn {{ f(pair('segformer_b2', 'deeplabv3plus_r50')['diff']) }} điểm mIoU</strong>, CI 95% {{ ci(pair('segformer_b2', 'deeplabv3plus_r50')) }} (bootstrap ghép cặp trên {{ n(D['meta']['val']) }} ảnh), và tốt hơn ở {{ pair('segformer_b2', 'deeplabv3plus_r50')['classes_a_wins'] }}/21 lớp. Năm lớp khó nhất của cả hai: <em>bicycle</em>, <em>chair</em>, <em>sofa</em>, <em>diningtable</em>, <em>pottedplant</em>.</li>
+    <li><strong>Lỗi chủ đạo là bỏ sót đối tượng thành nền</strong> ({{ f(A['runs']['segformer_b2']['missed_as_background'], 1) }}% pixel đối tượng với B2), không phải nhầm giữa các lớp. SegFormer-B2 ít nhầm lớp hơn hẳn: <em>bus</em> → <em>train</em> giảm từ {{ f(A['runs']['deeplabv3plus_r50']['confusion_rate']['bus->train'], 1) }}% xuống {{ f(A['runs']['segformer_b2']['confusion_rate']['bus->train'], 1) }}%, <em>cow</em> → <em>horse</em> từ {{ f(A['runs']['deeplabv3plus_r50']['confusion_rate']['cow->horse'], 1) }}% xuống {{ f(A['runs']['segformer_b2']['confusion_rate']['cow->horse'], 1) }}%.</li>
+    <li><strong>SegFormer thắng nhờ gán đúng lớp cho cả vùng, không phải nhờ đường biên.</strong> SegFormer-B1 và DeepLabV3+ có cùng mIoU ({{ f(S['segformer_b1'].miou) }} và {{ f(S['deeplabv3plus_r50'].miou) }}), nhưng trên dải 8 pixel quanh đường biên DeepLabV3+ hơn {{ f(A['runs']['deeplabv3plus_r50']['band_miou'] - A['runs']['segformer_b1']['band_miou'], 1) }} điểm.</li>
+    <li><strong>FLOPs không dự đoán được tốc độ.</strong> B2 cần ít phép tính hơn ({{ f(S['segformer_b2'].gmacs, 1) }} so với {{ f(S['deeplabv3plus_r50'].gmacs, 1) }} GMACs) nhưng chậm hơn trên RTX 3050 ({{ f(S['segformer_b2'].fps, 0) }} so với {{ f(S['deeplabv3plus_r50'].fps, 0) }} FPS). SegFormer-B1 là điểm cân bằng tốt nhất: cùng mIoU với DeepLabV3+, một nửa số tham số, {{ f(S['segformer_b1'].fps, 0) }} FPS.</li>
+  </ul>
+  <figure><img src="figures/fig_per_class.png" alt="IoU theo lớp" loading="lazy"><figcaption>IoU theo lớp của hai mô hình chính, sắp theo chênh lệch.</figcaption></figure>
+  <figure><img src="figures/fig_qualitative.png" alt="Kết quả định tính" loading="lazy"><figcaption>Các ảnh val mà hai mô hình khác nhau nhiều nhất và hai ảnh cả hai cùng sai (chọn tự động theo mIoU từng ảnh).</figcaption></figure>
+  <figure><img src="figures/fig_confusion.png" alt="Ma trận nhầm lẫn" loading="lazy"><figcaption>Tỉ lệ pixel của lớp thật bị gán sang lớp khác: cột background đậm nhất.</figcaption></figure>
+
+  <h3>Đối chiếu các nhận định của paper với thí nghiệm trên VOC</h3>
+  <div class="table-wrap"><table class="text">
+    <tr><th>Nhận định của paper</th><th>Thí nghiệm của bài tập</th><th>Đánh giá</th></tr>
+    <tr><td>SegFormer chính xác hơn CNN cùng cỡ</td><td>B2 hơn DeepLabV3+ R50 {{ f(pair('segformer_b2', 'deeplabv3plus_r50')['diff']) }} điểm</td><td>Tái hiện được</td></tr>
+    <tr><td>Mô hình nhỏ đạt độ chính xác của CNN lớn hơn</td><td>B1 ({{ f(S['segformer_b1'].params_M, 1) }} triệu) ngang DeepLabV3+ ({{ f(S['deeplabv3plus_r50'].params_M, 1) }} triệu): chênh {{ sg(pair('deeplabv3plus_r50', 'segformer_b1')['diff']) }} điểm, CI {{ ci(pair('deeplabv3plus_r50', 'segformer_b1')) }}</td><td>Tái hiện được với B1</td></tr>
+    <tr><td>Encoder lớn hơn thì tốt hơn (Bảng 1a)</td><td>B0 → B1 → B2: {{ sg(pair('segformer_b1', 'segformer_b0')['diff']) }} và {{ sg(pair('segformer_b2', 'segformer_b1')['diff']) }} điểm (paper: +4,8 và +4,3 trên ADE20K)</td><td>Tái hiện được</td></tr>
+    <tr><td>Decoder MLP cần encoder Transformer (Bảng 1d)</td><td>ResNet-50 + MLP kém MiT-B2 + MLP {{ f(pair('segformer_b2', 'resnet50_mlp')['diff'], 1) }} điểm (paper: 10,7)</td><td>Tái hiện được, cùng độ lớn</td></tr>
+    <tr><td>ERF của MiT lớn, của CNN nhỏ (Hình 3)</td><td>90% gradient của decoder nằm trong {{ E['runs']['resnet50_mlp']['decoder']['side_90'] }} px (ResNet-50 + MLP), {{ E['runs']['deeplabv3plus_r50']['decoder']['side_90'] }} px (DeepLabV3+), {{ E['runs']['segformer_b2']['decoder']['side_90'] }} px (B2)</td><td>Tái hiện và định lượng được</td></tr>
+    <tr><td>Bền với nhiễu ảnh (Bảng 5)</td><td>Giữ {{ f(100 * R['summary']['segformer_b2']['retention'], 0) }}% mIoU (B2) so với {{ f(100 * R['summary']['deeplabv3plus_r50']['retention'], 0) }}% (DeepLabV3+); B1 hơn DeepLabV3+ {{ f(R['summary']['segformer_b1']['mean_corrupted'] - R['summary']['deeplabv3plus_r50']['mean_corrupted'], 1) }} điểm dù cùng mIoU gốc</td><td>Tái hiện được; ở nhóm mờ lợi thế nhỏ</td></tr>
+    <tr><td>Bền với độ phân giải (Bảng 1c)</td><td>B2 và DeepLabV3+ thay đổi gần như nhau từ 0,5× đến 1,5×</td><td>Một phần: không hơn CNN</td></tr>
+    <tr><td>Hiệu quả tính toán, decoder nhẹ</td><td>Decoder nguyên bản của B2 cần {{ f(next(r for r in B['literal'] if r['arch'] == 'segformer_b2')['peak_mem_gb'], 1) }} GB; B2 chậm hơn DeepLabV3+ khi suy luận</td><td>Một phần</td></tr>
+    <tr><td>Dùng encoder pretrain ImageNet-1k</td><td>Không pretrain: {{ f(S['segformer_b0_scratch'].miou) }}% so với {{ f(S['segformer_b0'].miou) }}%</td><td>Pretraining là bắt buộc</td></tr>
+  </table></div>
+  <figure><img src="figures/fig_erf.png" alt="Effective receptive field" loading="lazy"><figcaption>Effective receptive field của bốn stage encoder và của đầu ra decoder (thang log). Decoder MLP trên ResNet-50 không mở rộng được vùng nhìn; ASPP và MiT thì nhìn gần như toàn ảnh.</figcaption></figure>
+  <figure><img src="figures/fig_robustness.png" alt="Độ bền với nhiễu ảnh" loading="lazy"><figcaption>mIoU dưới 9 loại nhiễu ở ba mức, và tỉ lệ mIoU giữ lại trung bình trên 27 điều kiện.</figcaption></figure>
+  {{ robustness_table() }}
+  <figure><img src="figures/fig_scale.png" alt="Độ bền với độ phân giải" loading="lazy"><figcaption>mIoU khi đổi tỉ lệ ảnh lúc suy luận. ResNet-50 + MLP tốt lên khi thu nhỏ ảnh, đúng với việc vùng nhìn của nó bị giới hạn.</figcaption></figure>
+
+  <h3>Hạn chế</h3>
+  <ul>
+    <li>Mỗi cấu hình chạy một seed; khoảng tin cậy bootstrap chỉ đo nhiễu của tập kiểm tra.</li>
+    <li>Lịch huấn luyện ngắn ({{ n(S['segformer_b2'].iters) }} vòng lặp, ít hơn 32 lần số mẫu so với paper), nên con số tuyệt đối là cận dưới.</li>
+    <li>Công thức huấn luyện của paper (AdamW) được áp cho cả CNN, không tinh chỉnh riêng; hai run ResNet-50 còn khác nhau ở output stride.</li>
+    <li>Thí nghiệm nhiễu là bản rút gọn (9 loại, tự cài đặt theo tham số ImageNet-C); chưa tái hiện ablation về positional encoding.</li>
+  </ul>
+  <p>Chi tiết đầy đủ trong <a href="report/report.pdf">báo cáo PDF</a> (Mục 6–8).</p>
+
+  <h2 id="demo">Demo</h2>
+  <p><code>scripts/demo.py</code> phân đoạn một ảnh bất kỳ bằng các mô hình đã huấn luyện và lưu hình so sánh kèm thời gian suy luận. Các ví dụ dưới đây là ảnh VOC 2012 val (mô hình chưa từng thấy khi huấn luyện), được chọn theo nhãn chứ không theo kết quả: ảnh đầu tiên của mỗi lớp.</p>
+<pre><code>python -m scripts.demo --images anh_cua_ban.jpg
+python -m scripts.demo --val-classes aeroplane bicycle bus cat dog person sofa train --out demo --gif demo/demo.gif</code></pre>
+  <!-- VIDEO: thay dòng dưới bằng link video demo, ví dụ <a href="https://youtu.be/...">Video demo</a> -->
+  <p><strong>Video demo:</strong> đang cập nhật.</p>
+  <figure><img src="demo/demo.gif" alt="Demo phân đoạn trên 8 ảnh val" loading="lazy"><figcaption>Kết quả của DeepLabV3+ R50 và SegFormer-B2 trên 8 ảnh val (ảnh động).</figcaption></figure>
+  <figure><img src="demo/2007_001239.png" alt="Demo: ba con chó trên giường" loading="lazy"><figcaption>DeepLabV3+ tô thêm các mảng sofa/chair trên tấm chăn; SegFormer-B2 chỉ tô ba con chó.</figcaption></figure>
+  <figure><img src="demo/2007_000129.png" alt="Demo: người đi xe đạp" loading="lazy"><figcaption>Xe đạp và người: cấu trúc mảnh của xe đạp là trường hợp khó với cả hai mô hình.</figcaption></figure>
+
+  <h2>Tái lập</h2>
+<pre><code>pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu124
+python -m scripts.prepare_data   # tải VOC 2012 + SBD, tạo split
+python -m src.eda                # thống kê + hình EDA
+python -m scripts.run_all        # 6 cấu hình (bỏ qua run đã xong, resume run dở)
+python -m src.erf                # effective receptive field
+python -m src.robustness         # nhiễu ảnh và độ phân giải
+python -m src.analyze            # bảng tổng hợp, kiểm định, hình
+python -m scripts.build_report   # báo cáo PDF
+python -m scripts.demo --images anh_cua_ban.jpg</code></pre>
+
+  <footer>Pascal VOC 2012 + SBD · PyTorch 2.5.1 · timm 1.0.30 · Mọi số liệu trên trang được sinh tự động từ <code>results/</code> bằng <code>scripts/build_page.py</code>.</footer>
+</main>
+</body>
+</html>

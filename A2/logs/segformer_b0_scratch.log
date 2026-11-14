@@ -1,0 +1,12 @@
+[segformer_b0_scratch] params 3.72M (encoder 3.32M, decoder 0.40M) GMACs@512=3.6 train=10082 minival=500 iters=10000 (~7.9 epochs)
+[segformer_b0_scratch] it   1000/10000 loss 1.799 train_acc 57.54 minival mIoU 4.13 43.2 img/s  elapsed 3.1 min
+[segformer_b0_scratch] it   2000/10000 loss 1.399 train_acc 63.97 minival mIoU 4.86 45.8 img/s  elapsed 6.0 min
+[segformer_b0_scratch] it   3000/10000 loss 1.287 train_acc 65.30 minival mIoU 6.21 45.9 img/s  elapsed 8.9 min
+[segformer_b0_scratch] it   4000/10000 loss 1.239 train_acc 65.72 minival mIoU 7.82 45.9 img/s  elapsed 11.8 min
+[segformer_b0_scratch] it   5000/10000 loss 1.181 train_acc 66.92 minival mIoU 9.42 46.0 img/s  elapsed 14.7 min
+[segformer_b0_scratch] it   6000/10000 loss 1.118 train_acc 67.79 minival mIoU 11.89 45.9 img/s  elapsed 17.6 min
+[segformer_b0_scratch] it   7000/10000 loss 1.064 train_acc 69.09 minival mIoU 14.30 46.0 img/s  elapsed 20.5 min
+[segformer_b0_scratch] it   8000/10000 loss 1.021 train_acc 70.05 minival mIoU 16.73 46.0 img/s  elapsed 23.4 min
+[segformer_b0_scratch] it   9000/10000 loss 0.963 train_acc 71.51 minival mIoU 17.38 45.9 img/s  elapsed 26.3 min
+[segformer_b0_scratch] it  10000/10000 loss 0.944 train_acc 71.78 minival mIoU 18.75 45.8 img/s  elapsed 29.2 min
+[segformer_b0_scratch] VOC12 val: mIoU 19.51 mDice 28.08 pixel acc 79.39 boundary mIoU 13.30 | train 29.2 min, peak 1.87 GB, 106.8 FPS

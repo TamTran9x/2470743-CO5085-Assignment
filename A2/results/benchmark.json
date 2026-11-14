@@ -1,0 +1,96 @@
+{
+  "merged": [
+    {
+      "arch": "deeplabv3plus_r50",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 21.01023792908369,
+      "peak_mem_gb": 3.7868876457214355,
+      "params": 26695877,
+      "gmacs_512": 37.68713216
+    },
+    {
+      "arch": "resnet50_mlp",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 19.162229296092388,
+      "peak_mem_gb": 3.908906936645508,
+      "params": 28837205,
+      "gmacs_512": 29.922164736
+    },
+    {
+      "arch": "segformer_b0",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 47.366978424756034,
+      "peak_mem_gb": 1.713292121887207,
+      "params": 3719541,
+      "gmacs_512": 3.585343488
+    },
+    {
+      "arch": "segformer_b1",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 34.04476743714133,
+      "peak_mem_gb": 2.591343879699707,
+      "params": 13682645,
+      "gmacs_512": 11.109138432
+    },
+    {
+      "arch": "segformer_b2",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 17.103888874918358,
+      "peak_mem_gb": 4.687663555145264,
+      "params": 27362773,
+      "gmacs_512": 22.663921664
+    }
+  ],
+  "literal": [
+    {
+      "arch": "deeplabv3plus_r50",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 20.847366332885358,
+      "peak_mem_gb": 3.8038554191589355,
+      "params": 26695877,
+      "gmacs_512": 37.68713216
+    },
+    {
+      "arch": "resnet50_mlp",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 4.596319610504575,
+      "peak_mem_gb": 6.319026947021484,
+      "params": 28837205,
+      "gmacs_512": 66.31194624
+    },
+    {
+      "arch": "segformer_b0",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 39.786153856034844,
+      "peak_mem_gb": 2.6242222785949707,
+      "params": 3719541,
+      "gmacs_512": 7.846756352
+    },
+    {
+      "arch": "segformer_b1",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 30.0165646292937,
+      "peak_mem_gb": 3.182668685913086,
+      "params": 13682645,
+      "gmacs_512": 15.336996864
+    },
+    {
+      "arch": "segformer_b2",
+      "crop": 512,
+      "batch_size": 8,
+      "img_per_s": 2.4629442462707014,
+      "peak_mem_gb": 7.208125591278076,
+      "params": 27362773,
+      "gmacs_512": 60.714647552
+    }
+  ]
+}

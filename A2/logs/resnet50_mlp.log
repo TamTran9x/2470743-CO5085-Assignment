@@ -1,0 +1,13 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[resnet50_mlp] params 28.84M (encoder 23.51M, decoder 5.33M) GMACs@512=29.9 train=10082 minival=500 iters=10000 (~7.9 epochs)
+[resnet50_mlp] it   1000/10000 loss 0.870 train_acc 76.05 minival mIoU 52.33 18.6 img/s  elapsed 7.2 min
+[resnet50_mlp] it   2000/10000 loss 0.572 train_acc 83.05 minival mIoU 56.60 18.7 img/s  elapsed 14.3 min
+[resnet50_mlp] it   3000/10000 loss 0.500 train_acc 84.76 minival mIoU 59.64 18.7 img/s  elapsed 21.4 min
+[resnet50_mlp] it   4000/10000 loss 0.450 train_acc 86.08 minival mIoU 60.87 18.7 img/s  elapsed 28.6 min
+[resnet50_mlp] it   5000/10000 loss 0.416 train_acc 86.90 minival mIoU 63.05 17.1 img/s  elapsed 36.4 min
+[resnet50_mlp] it   6000/10000 loss 0.377 train_acc 88.05 minival mIoU 63.25 18.7 img/s  elapsed 43.5 min
+[resnet50_mlp] it   7000/10000 loss 0.358 train_acc 88.46 minival mIoU 63.51 18.7 img/s  elapsed 50.7 min
+[resnet50_mlp] it   8000/10000 loss 0.327 train_acc 89.42 minival mIoU 63.67 18.7 img/s  elapsed 57.8 min
+[resnet50_mlp] it   9000/10000 loss 0.309 train_acc 89.96 minival mIoU 63.52 18.7 img/s  elapsed 64.9 min
+[resnet50_mlp] it  10000/10000 loss 0.296 train_acc 90.23 minival mIoU 63.49 18.7 img/s  elapsed 72.1 min
+[resnet50_mlp] VOC12 val: mIoU 69.16 mDice 80.48 pixel acc 93.17 boundary mIoU 60.73 | train 72.1 min, peak 4.07 GB, 51.9 FPS

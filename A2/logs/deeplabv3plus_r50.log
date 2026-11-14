@@ -1,0 +1,13 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[deeplabv3plus_r50] params 26.70M (encoder 23.51M, decoder 3.19M) GMACs@512=37.7 train=10082 minival=500 iters=10000 (~7.9 epochs)
+[deeplabv3plus_r50] it   1000/10000 loss 0.919 train_acc 74.38 minival mIoU 58.25 20.1 img/s  elapsed 6.6 min
+[deeplabv3plus_r50] it   2000/10000 loss 0.446 train_acc 85.88 minival mIoU 61.12 20.3 img/s  elapsed 13.2 min
+[deeplabv3plus_r50] it   3000/10000 loss 0.380 train_acc 87.58 minival mIoU 65.25 20.3 img/s  elapsed 19.8 min
+[deeplabv3plus_r50] it   4000/10000 loss 0.327 train_acc 89.15 minival mIoU 67.14 20.3 img/s  elapsed 26.3 min
+[deeplabv3plus_r50] it   5000/10000 loss 0.298 train_acc 89.95 minival mIoU 68.97 20.3 img/s  elapsed 32.9 min
+[deeplabv3plus_r50] it   6000/10000 loss 0.261 train_acc 91.03 minival mIoU 69.21 20.3 img/s  elapsed 39.5 min
+[deeplabv3plus_r50] it   7000/10000 loss 0.248 train_acc 91.37 minival mIoU 70.76 20.3 img/s  elapsed 46.0 min
+[deeplabv3plus_r50] it   8000/10000 loss 0.229 train_acc 91.99 minival mIoU 70.19 20.2 img/s  elapsed 52.6 min
+[deeplabv3plus_r50] it   9000/10000 loss 0.210 train_acc 92.65 minival mIoU 72.37 20.3 img/s  elapsed 59.2 min
+[deeplabv3plus_r50] it  10000/10000 loss 0.194 train_acc 93.15 minival mIoU 72.08 20.3 img/s  elapsed 65.8 min
+[deeplabv3plus_r50] VOC12 val: mIoU 75.67 mDice 84.97 pixel acc 94.28 boundary mIoU 67.30 | train 65.8 min, peak 3.95 GB, 58.7 FPS

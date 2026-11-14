@@ -1,0 +1,21 @@
+{
+  "arch": "segformer_b0",
+  "name": "segformer_b0_scratch",
+  "no_pretrained": true,
+  "iters": 10000,
+  "batch_size": 8,
+  "crop": 512,
+  "lr": 0.0006,
+  "head_lr_mult": 1.0,
+  "wd": 0.01,
+  "warmup": 1500,
+  "drop_path": 0.1,
+  "decoder_dim": null,
+  "eval_every": 1000,
+  "seed": 42,
+  "workers": 6,
+  "out": "results",
+  "ckpt_dir": "checkpoints",
+  "train_subset": 0,
+  "eval_subset": 0
+}

@@ -1,0 +1,68 @@
+{
+  "b0": {
+    "checkpoint": "nvidia/segformer-b0-finetuned-ade-512-512",
+    "params": 3752694,
+    "ref_params": 3752694,
+    "checks": [
+      {
+        "input": [
+          512,
+          512
+        ],
+        "output": [
+          128,
+          128
+        ],
+        "max_abs_diff": 0.00365447998046875,
+        "logit_abs_mean": 12.007988929748535,
+        "argmax_agreement": 0.99993896484375
+      },
+      {
+        "input": [
+          375,
+          500
+        ],
+        "output": [
+          94,
+          125
+        ],
+        "max_abs_diff": 0.003509521484375,
+        "logit_abs_mean": 12.21534538269043,
+        "argmax_agreement": 0.9998723268508911
+      }
+    ]
+  },
+  "b2": {
+    "checkpoint": "nvidia/segformer-b2-finetuned-ade-512-512",
+    "params": 27461974,
+    "ref_params": 27461974,
+    "checks": [
+      {
+        "input": [
+          512,
+          512
+        ],
+        "output": [
+          128,
+          128
+        ],
+        "max_abs_diff": 0.0027294158935546875,
+        "logit_abs_mean": 11.20468521118164,
+        "argmax_agreement": 0.999969482421875
+      },
+      {
+        "input": [
+          375,
+          500
+        ],
+        "output": [
+          94,
+          125
+        ],
+        "max_abs_diff": 0.00293731689453125,
+        "logit_abs_mean": 11.293805122375488,
+        "argmax_agreement": 0.9998723268508911
+      }
+    ]
+  }
+}
