@@ -100,4 +100,3 @@ Chạy một cấu hình riêng: `python -m src.train --arch {deeplabv3plus_r50,
 Demo trên ảnh bất kỳ: `python -m scripts.demo --images anh.jpg` (cần `checkpoints/`, không nằm trong repository vì dung lượng).
 Dữ liệu (~3,4 GB) được tải từ máy chủ chính thức của VOC (Oxford) và SBD (Berkeley). Trên GPU 6 GB, sáu cấu hình mất khoảng 5,3 giờ huấn luyện, cộng khoảng 1 giờ cho các thí nghiệm chỉ suy luận.
 
-> Ghi chú: trên laptop, hãy cắm sạc khi huấn luyện. Khi chạy bằng pin, GPU bị giới hạn công suất và chậm hơn khoảng 20 lần; `scripts/post_train.ps1` tự chờ đến khi có nguồn điện.
