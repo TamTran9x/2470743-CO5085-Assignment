@@ -1,7 +1,9 @@
 # A2 — Phân đoạn ngữ nghĩa trên Pascal VOC 2012: SegFormer so với DeepLabV3+
 
 CO5085 · Học sâu và ứng dụng trong thị giác máy tính · HK261 (2026–2027)
+
 Học viên: **Trần Hoài Tâm** – MSHV 2470743
+
 Giảng viên: Lê Thành Sách, Nguyễn Quốc Minh
 
 - Trang A2: https://tamtran9x.github.io/2470743-CO5085-Assignment/A2/
